@@ -1371,845 +1371,656 @@ const FACTION_PROFILES = {
 
 const QUESTIONS = [
 
-{
-    category: "Opening Move",
-    text: "The battle is about to begin. What is your instinct?",
-    options: [
-        {
-            label: "Establish a position that makes the enemy's approach dangerous.",
-            scores: {
-                "Firepower": 3
-            }
-        },
-        {
-            label: "Move into positions that give me the most control over the battlefield.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Create an immediate problem that demands an answer.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Occupy as much important ground as possible before the battle develops.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
-
-{
-    category: "Command Identity",
-    text: "Which kind of commander feels most like you?",
-    options: [
-        {
-            label: "The commander who wins by carefully coordinating many moving parts.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "The commander who always seems to have another solution ready.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "The commander leading a small force trusted to accomplish impossible missions.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "The commander whose forces can appear where they are least expected.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
-
-{
-    category: "Battlefield Control",
-    text: "What does controlling the battlefield mean to you?",
-    options: [
-        {
-            label: "Making certain areas too dangerous for the enemy to enter.",
-            scores: {
-                "Firepower": 3
-            }
-        },
-        {
-            label: "Being able to reach and influence the important areas first.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Forcing the opponent into situations where every choice has a cost.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Having enough presence that the enemy cannot simply ignore large parts of the board.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
-
-{
-    category: "Uncertainty",
-    text: "The battle isn't going according to plan. What sounds most satisfying?",
-    options: [
-        {
-            label: "Turn the situation around with a carefully prepared interaction.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "Find the tool or tactic that specifically solves the new problem.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "Commit a highly capable force to solve the problem directly.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "Exploit the confusion and strike somewhere unexpected.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
-
-{
-    category: "Threat",
-    text: "What kind of threat do you most want your opponent to respect?",
-    options: [
-        {
-            label: "The places my army can punish them from a distance.",
-            scores: {
-                "Firepower": 3
-            }
-        },
-        {
-            label: "How quickly my forces can change the situation.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "The consequences of ignoring any immediate threat I create.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "The sheer amount of battlefield presence I can bring to bear.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
-
-{
-    category: "The Long Game",
-    text: "The battle is going to last several turns. What matters most?",
-    options: [
-        {
-            label: "Maintaining the ability to keep dealing meaningful damage from range.",
-            scores: {
-                "Firepower": 3
-            }
-        },
-        {
-            label: "Keeping enough freedom to reposition as the battle changes.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Keeping the opponent under enough pressure that they never get comfortable.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Maintaining enough battlefield presence that losing ground is difficult.",
-            scores: {
-                "Mass": 3
+    {
+        category: "Opening Move",
+        text: "The battle is about to begin. What are you most eager to establish?",
+        options: [
+            {
+                label: "A position from which the enemy cannot approach safely.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "A foothold that lets me threaten several important areas.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "An immediate threat that demands an answer.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "A broad presence that makes the battlefield difficult to take from me.",
+                scores: { "Mass": 3 }
             }
         ]
-    ]
-},
+    },
 
-{
-    category: "Mission",
-    text: "You are given a difficult objective. How would you rather accomplish it?",
-    options: [
-        {
-            label: "Build the entire army around several abilities working together.",
-            scores: {
-                "Synergy": 3
+    {
+        category: "Command Identity",
+        text: "Which commander sounds most like the kind of player you want to be?",
+        options: [
+            {
+                label: "Someone whose small number of units can accomplish extraordinary things.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "Someone whose army becomes stronger as its different pieces work together.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "Someone who can bring the right capability to almost any situation.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "Someone who can disappear from one part of the battlefield and strike somewhere else.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "Bring several different capabilities so I can adapt to whatever appears.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "Send a highly capable force that can accomplish the mission on its own.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "Find an unexpected route and strike the objective when the enemy is vulnerable.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Risk",
-    text: "Which kind of risk are you most comfortable taking?",
-    options: [
-        {
-            label: "Trusting superior range to make my position safe enough.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Endurance",
+        text: "The battle has become a long, grinding fight. What advantage would you rather have?",
+        options: [
+            {
+                label: "Even after losing a lot, my army can still perform its job.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "My remaining units are exceptionally capable and difficult to replace.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "The enemy is increasingly running out of places where they can operate safely.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "I still have enough bodies and units to contest almost everything that matters.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "Leaving one position because another may become more valuable.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Making an aggressive move that forces the opponent to react.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Committing heavily to control a large part of the battlefield.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Recovery",
-    text: "Something important has gone wrong. What is your preferred response?",
-    options: [
-        {
-            label: "Use the remaining pieces together in a way that creates a new advantage.",
-            scores: {
-                "Synergy": 3
+    {
+        category: "Uncertainty",
+        text: "Your opponent does something you did not anticipate. What sounds most satisfying?",
+        options: [
+            {
+                label: "Realize that something already in my army is perfectly suited to deal with it.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "Change how my units interact and turn the unexpected situation into an advantage.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "Use one of my strongest units to solve the problem directly.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "Ignore the problem and exploit an opening somewhere they left exposed.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "Change plans and use whatever capability is best suited to the situation.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "Rely on a particularly capable unit to stabilize the situation.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "Disappear from the problem and reappear somewhere more advantageous.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Victory",
-    text: "At the end of a successful game, what would make you think, 'That was exactly how I wanted to win'?",
-    options: [
-        {
-            label: "The opponent eventually had nowhere safe to stand.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Threat",
+        text: "What do you most want your opponent thinking about during their turn?",
+        options: [
+            {
+                label: "Which of my units could punish them if they expose themselves.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "How quickly I could reach whichever objective they leave vulnerable.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "What will happen if they fail to deal with the threat I just created.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "How much of the battlefield they would have to fight through to dislodge me.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "I was always where I needed to be.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "The opponent spent the game reacting to my decisions.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "My army's presence made the whole battlefield feel like mine.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Army Philosophy",
-    text: "Which philosophy sounds most appealing?",
-    options: [
-        {
-            label: "Every part has a role, and the plan succeeds because those roles reinforce each other.",
-            scores: {
-                "Synergy": 3
+    {
+        category: "Risk",
+        text: "Which gamble would you be most comfortable making?",
+        options: [
+            {
+                label: "Trusting my range to keep the enemy away long enough for the plan to work.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "Abandoning a useful position because another location may become more important.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Making an aggressive move before I know exactly how the opponent will respond.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Committing a large part of my force to dominate an important section of the battlefield.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "I don't need to know exactly what will happen because I have ways to handle it.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "Give me a force capable of doing things ordinary forces cannot.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "Give me the ability to decide when and where the enemy actually has to fight.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Losses",
-    text: "Your army has taken serious casualties. What matters most now?",
-    options: [
-        {
-            label: "Keep enough of the army alive to continue wearing the opponent down.",
-            scores: {
-                "Attrition": 3
+    {
+        category: "Recovery",
+        text: "A major part of your plan has failed. What would you rather rely on?",
+        options: [
+            {
+                label: "The pieces I still have can combine in an unexpected way.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "I have enough different capabilities that something should still work.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "One particularly capable unit can take over the difficult part of the job.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "I can withdraw, reposition, and hit the opponent somewhere they are weaker.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "Preserve the capabilities that let me respond to different threats.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "Make the surviving pieces work together more efficiently.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "Use what remains to launch an unexpected counterattack.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Position",
-    text: "You have secured a strong position. What do you want to do next?",
-    options: [
-        {
-            label: "Make the position increasingly difficult to challenge.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Victory",
+        text: "Which end to a game would feel most satisfying?",
+        options: [
+            {
+                label: "The enemy eventually had almost nowhere they could safely expose themselves.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "I was consistently able to put the right units in the right places.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "The opponent spent most of the game responding to problems I created.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "My army occupied so much of the battlefield that the opponent could not deal with everything.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "Use it as a starting point for controlling somewhere else.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Use it to create a new threat the opponent must answer.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Expand the position until it becomes a major part of the battlefield.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Command Decisions",
-    text: "You have several good options. What makes one the right choice?",
-    options: [
-        {
-            label: "It creates the strongest immediate threat.",
-            scores: {
-                "Pressure": 3
+    {
+        category: "Army Philosophy",
+        text: "Which philosophy would you rather build an army around?",
+        options: [
+            {
+                label: "Every unit has a purpose, and those purposes become stronger when combined.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "I want enough different tools that I am rarely without an answer.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "I would rather have a few exceptional units than many ordinary ones.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "I want to decide when and where the enemy actually has to fight me.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "It keeps the most future options open.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "It makes several parts of my army stronger together.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "It puts my forces where they can have the greatest influence.",
-            scores: {
-                "Mobility": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Battlefield Presence",
-    text: "Which battlefield picture appeals to you most?",
-    options: [
-        {
-            label: "A network of positions that makes the battlefield dangerous from every angle.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Losses",
+        text: "Your army has suffered serious casualties. What matters most?",
+        options: [
+            {
+                label: "The army can continue functioning despite everything it has lost.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "The capabilities that remain give me enough different ways to respond.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "The survivors can combine their abilities more efficiently than before.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "The surviving force can strike somewhere the opponent has become vulnerable.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "Forces constantly shifting between important areas.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Multiple threats forcing the opponent to make difficult choices.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "A broad front that the opponent simply cannot ignore.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Force Structure",
-    text: "How would you rather your army function as a fighting force?",
-    options: [
-        {
-            label: "As a collection of specialized capabilities I can call upon as needed.",
-            scores: {
-                "Toolbox": 3
+    {
+        category: "Position",
+        text: "You have secured an excellent position. What do you want to do with it?",
+        options: [
+            {
+                label: "Turn it into a place the enemy cannot approach without suffering.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "Use it as a launching point toward the next important location.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Use it to create another problem that the opponent must answer.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Expand from it until the enemy has to fight over a much larger area.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "As interconnected parts that become stronger when coordinated.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "As a highly capable force where individual elements can perform exceptional tasks.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "As a force that can divide, disappear, and strike from unexpected directions.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Endurance",
-    text: "What kind of resilience appeals to you most?",
-    options: [
-        {
-            label: "Being able to keep fighting effectively even after taking losses.",
-            scores: {
-                "Attrition": 3
+    {
+        category: "Command Decisions",
+        text: "Several choices look good. What makes one stand out to you?",
+        options: [
+            {
+                label: "It creates the most immediate danger for the opponent.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "It preserves the greatest number of possible responses later.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "It allows several parts of my army to reinforce one another.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "It puts my forces somewhere they can influence the most important part of the battle.",
+                scores: { "Mobility": 3 }
             }
-        },
-        {
-            label: "Being difficult to catch because I can keep changing position.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Being able to punish an opponent every time they try to recover.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Having enough forces remaining that losses barely change my ability to operate.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Information",
-    text: "You know something your opponent doesn't. How would you rather use that advantage?",
-    options: [
-        {
-            label: "Set up a devastating attack before they realize what is happening.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Battlefield Presence",
+        text: "Which battlefield picture appeals to you most?",
+        options: [
+            {
+                label: "A web of dangerous firing positions covering the battlefield.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "Units constantly shifting between whichever areas matter most.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Several simultaneous threats forcing the opponent to choose what to sacrifice.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "A broad front of units that the opponent cannot simply ignore.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "Move into a position they cannot respond to efficiently.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Reveal the threat at exactly the moment it creates the most difficult decision.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Exploit the information to create a sudden attack from an unexpected direction.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Adaptation",
-    text: "Your opponent brings something you did not expect. What is your reaction?",
-    options: [
-        {
-            label: "I already have something in the army that can deal with it.",
-            scores: {
-                "Toolbox": 3
+    {
+        category: "Force Structure",
+        text: "How would you rather your army solve problems?",
+        options: [
+            {
+                label: "By having a specialized answer for almost anything I might encounter.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "By having different units whose abilities become powerful when combined.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "By relying on a small number of units that can perform at an exceptional level.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "By using concealment, positioning, and unexpected attacks to avoid fair fights.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "I change the way my existing pieces interact to deal with it.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "I trust one of my strongest elements to handle it.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "I avoid confronting it directly and attack somewhere else.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Attrition",
-    text: "Two armies are slowly grinding each other down. What sounds like the better position?",
-    options: [
-        {
-            label: "My army is still capable of doing its job after suffering heavy losses.",
-            scores: {
-                "Attrition": 3
+    {
+        category: "Endurance",
+        text: "What kind of resilience appeals to you most?",
+        options: [
+            {
+                label: "Continuing to operate effectively after suffering losses that would cripple another army.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "Remaining difficult to pin down because I can keep changing where I fight.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Punishing the opponent whenever they try to recover or stabilize.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Having enough units remaining that individual losses barely change the overall plan.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "My remaining forces are becoming increasingly important as the battlefield shrinks.",
-            scores: {
-                "Elite": 3
-            }
-        },
-        {
-            label: "The enemy has fewer and fewer safe places to operate.",
-            scores: {
-                "Firepower": 3
-            }
-        },
-        {
-            label: "I have maintained enough battlefield presence to keep contesting everything that matters.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Surprise",
-    text: "What makes a surprise attack satisfying?",
-    options: [
-        {
-            label: "The attack arrives from somewhere the opponent thought was safe.",
-            scores: {
-                "Ambush": 3
+    {
+        category: "Information",
+        text: "You know something important that your opponent does not. How would you use it?",
+        options: [
+            {
+                label: "Prepare a devastating attack before they understand the danger.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "Move into a position that makes their response awkward or impossible.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Reveal the threat at exactly the moment when it creates the hardest decision.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Use their lack of information to attack from an unexpected direction.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "The attack is perfectly timed because several abilities interact.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "The attack uses exactly the specialized capability the situation demanded.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "A small force accomplishes something far beyond what its size suggests.",
-            scores: {
-                "Elite": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Tempo",
-    text: "The opponent gives you an opening. What do you value most?",
-    options: [
-        {
-            label: "Exploit it immediately before they can recover.",
-            scores: {
-                "Pressure": 3
+    {
+        category: "Adaptation",
+        text: "Your opponent brings something that threatens your plan. What is your instinct?",
+        options: [
+            {
+                label: "I already have something designed to deal with this kind of threat.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "I change how my existing units work together to create an answer.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "I trust one of my strongest units to deal with it.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "I avoid the threat and attack somewhere that gives me a better exchange.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "Use it to move into an even better position.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Turn the opening into a sequence of coordinated actions.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "Use the opening to bring more of my army into the fight.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Firepower",
-    text: "When you think about ranged warfare, what matters most?",
-    options: [
-        {
-            label: "Creating such overwhelming threat that the enemy cannot safely expose themselves.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Grinding Battle",
+        text: "Two armies have been fighting for several turns and both are badly damaged. Which situation do you prefer?",
+        options: [
+            {
+                label: "My army has lost heavily, but its ability to fight has not collapsed.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "My surviving units are now the most important pieces on the battlefield.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "The enemy has progressively fewer safe places from which to operate.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "I still have enough units spread across the battlefield to contest almost everything.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "Being able to relocate and establish new firing opportunities.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Using ranged attacks to force the enemy into bad decisions.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Having enough ranged presence that no part of the battlefield feels completely safe.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Complexity",
-    text: "How do you want your army to challenge you as a commander?",
-    options: [
-        {
-            label: "I want to master a small number of powerful capabilities.",
-            scores: {
-                "Elite": 3
+    {
+        category: "Surprise",
+        text: "What makes a successful surprise attack satisfying?",
+        options: [
+            {
+                label: "The attack comes from somewhere the opponent thought was safe.",
+                scores: { "Ambush": 3 }
+            },
+            {
+                label: "The attack works because several abilities interact at exactly the right moment.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "I happen to have exactly the specialized capability the situation requires.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "A small number of exceptionally capable units accomplish something far beyond their numbers.",
+                scores: { "Elite": 3 }
             }
-        },
-        {
-            label: "I want many different tools and decisions available to me.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "I want to discover powerful interactions between my units and abilities.",
-            scores: {
-                "Synergy": 3
-            }
-        },
-        {
-            label: "I want to constantly think about positioning, concealment, and timing.",
-            scores: {
-                "Ambush": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Final Instinct",
-    text: "If you could strengthen one aspect of your army without changing anything else, what would you choose?",
-    options: [
-        {
-            label: "More ways to survive long enough to keep fighting.",
-            scores: {
-                "Attrition": 3
+    {
+        category: "Tempo",
+        text: "The opponent makes a mistake. What do you want to do with the opening?",
+        options: [
+            {
+                label: "Exploit it immediately before they can recover.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Use it to move into an even more advantageous position.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Turn the opening into a chain of actions where each one strengthens the next.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "Use it to bring additional forces into the part of the battlefield that matters.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "More ways to appear where the opponent least expects.",
-            scores: {
-                "Ambush": 3
-            }
-        },
-        {
-            label: "More answers to unexpected situations.",
-            scores: {
-                "Toolbox": 3
-            }
-        },
-        {
-            label: "More ways for my army's parts to amplify one another.",
-            scores: {
-                "Synergy": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Commander Fantasy",
-    text: "Which battlefield story would you most want to tell afterward?",
-    options: [
-        {
-            label: "We controlled the fight from a distance and never gave them a safe approach.",
-            scores: {
-                "Firepower": 3
+    {
+        category: "Ranged Warfare",
+        text: "When building around ranged weapons, what sounds most appealing?",
+        options: [
+            {
+                label: "Enough firepower that exposing a unit becomes a serious gamble.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "The ability to relocate and create new firing opportunities throughout the game.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Using shooting to force the opponent into increasingly bad choices.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Having so much ranged presence that the enemy struggles to find a safe area.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "We were everywhere we needed to be and nowhere they wanted us.",
-            scores: {
-                "Mobility": 3
-            }
-        },
-        {
-            label: "Every turn forced them into another impossible decision.",
-            scores: {
-                "Pressure": 3
-            }
-        },
-        {
-            label: "Our army was simply too much for the battlefield to contain.",
-            scores: {
-                "Mass": 3
-            }
-        }
-    ]
-},
+        ]
+    },
 
-{
-    category: "Commander Fantasy",
-    text: "And which commander would you most enjoy being?",
-    options: [
-        {
-            label: "The commander whose force survives the battle and wins through endurance.",
-            scores: {
-                "Attrition": 3
+    {
+        category: "Complexity",
+        text: "What kind of challenge would you most enjoy mastering?",
+        options: [
+            {
+                label: "Getting maximum performance from a small number of exceptionally powerful units.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "Having a large selection of different answers available at all times.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "Learning how different units and abilities can combine into powerful sequences.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "Mastering concealment, positioning, timing, and unexpected attacks.",
+                scores: { "Ambush": 3 }
             }
-        },
-        {
-            label: "The commander whose forces strike from places nobody expected.",
-            scores: {
-                "Ambush": 3
+        ]
+    },
+
+    {
+        category: "Final Instinct",
+        text: "If you could strengthen one aspect of your army without changing anything else, what would you choose?",
+        options: [
+            {
+                label: "More ability to keep functioning after suffering losses.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "More ways to strike from unexpected locations.",
+                scores: { "Ambush": 3 }
+            },
+            {
+                label: "More answers to situations I did not prepare for.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "More ways for my army's different parts to amplify one another.",
+                scores: { "Synergy": 3 }
             }
-        },
-        {
-            label: "The commander who always has the right answer.",
-            scores: {
-                "Toolbox": 3
+        ]
+    },
+
+    {
+        category: "Commander Fantasy",
+        text: "Which battlefield story would you most want to tell afterward?",
+        options: [
+            {
+                label: "We controlled the battlefield from a distance and never gave them a safe approach.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "We were always where we needed to be and forced them to react to our movement.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "Every turn created another problem they had to solve.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "There were simply too many of us for the opponent to deal with everything.",
+                scores: { "Mass": 3 }
             }
-        },
-        {
-            label: "The commander whose entire force operates like a single machine.",
-            scores: {
-                "Synergy": 3
+        ]
+    },
+
+    {
+        category: "Commander Fantasy",
+        text: "And which kind of commander would you most enjoy being?",
+        options: [
+            {
+                label: "The commander whose army wins because it refuses to stop functioning.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "The commander whose forces appear where nobody expected them.",
+                scores: { "Ambush": 3 }
+            },
+            {
+                label: "The commander who always seems to have the right tool for the situation.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "The commander whose entire force functions as a coordinated system.",
+                scores: { "Synergy": 3 }
             }
-        }
-    ]
-}
+        ]
+    },
+
+    // ─────────────────────────────────────────────
+    // Additional questions added to properly balance
+    // the nine axes.
+    // ─────────────────────────────────────────────
+
+    {
+        category: "Commitment",
+        text: "You have enough resources to strongly support only one part of the battlefield. What do you prefer?",
+        options: [
+            {
+                label: "Commit overwhelming force and make that area impossible to ignore.",
+                scores: { "Mass": 3 }
+            },
+            {
+                label: "Commit a small number of units that can accomplish the task without much support.",
+                scores: { "Elite": 3 }
+            },
+            {
+                label: "Commit whatever combination of units creates the strongest interaction.",
+                scores: { "Synergy": 3 }
+            },
+            {
+                label: "Commit enough durable capability that I can afford to lose some of it over time.",
+                scores: { "Attrition": 3 }
+            }
+        ]
+    },
+
+    {
+        category: "Counterattack",
+        text: "The opponent has pushed aggressively into your territory. What response appeals most?",
+        options: [
+            {
+                label: "Let them advance into a position where my firepower can punish them.",
+                scores: { "Firepower": 3 }
+            },
+            {
+                label: "Slip around their advance and threaten somewhere they left exposed.",
+                scores: { "Ambush": 3 }
+            },
+            {
+                label: "Use their commitment against them by creating an even more urgent threat elsewhere.",
+                scores: { "Pressure": 3 }
+            },
+            {
+                label: "Bring enough forces into the area to absorb the attack and overwhelm it.",
+                scores: { "Mass": 3 }
+            }
+        ]
+    },
+
+    {
+        category: "Mission",
+        text: "You must accomplish an objective in an unfamiliar situation. What would you rather have?",
+        options: [
+            {
+                label: "The freedom to move quickly enough that I can choose the engagement.",
+                scores: { "Mobility": 3 }
+            },
+            {
+                label: "A collection of specialized capabilities so I can adapt as new problems appear.",
+                scores: { "Toolbox": 3 }
+            },
+            {
+                label: "A force resilient enough that losses along the way do not stop the mission.",
+                scores: { "Attrition": 3 }
+            },
+            {
+                label: "A small force with enough individual capability to complete the objective itself.",
+                scores: { "Elite": 3 }
+            }
+        ]
+    }
 
 ];
-
 
 /* =========================================================
    STATE
