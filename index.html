@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>What's Your 40K Playstyle?</title>
 
@@ -10,410 +10,502 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,500&family=Oswald:wght@500;600&display=swap');
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  min-height: 100%;
-  background:
-    linear-gradient(rgba(12, 10, 12, 0.78), rgba(12, 10, 12, 0.88)),
-    url('mapofgalaxy.png') center / cover fixed;
-  color: #e9e1cd;
-  font-family: 'Crimson Pro', serif;
+    margin: 0;
+    min-height: 100%;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  padding: 40px 16px;
+    background:
+        linear-gradient(
+            rgba(10, 8, 10, 0.82),
+            rgba(10, 8, 10, 0.92)
+        ),
+        url("mapofgalaxy.png");
+
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: #e9e1cd;
+    font-family: "Crimson Pro", serif;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px 16px;
+}
+
+button {
+    font-family: inherit;
 }
 
 #app {
-  width: 100%;
-  max-width: 700px;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* -------------------------------------------------------
+   TYPOGRAPHY
+------------------------------------------------------- */
+
+.display {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.02em;
 }
 
 .eyebrow {
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-size: 11px;
-  color: #9c8f6f;
-}
-
-.display {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.02em;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #9c8f6f;
 }
 
 .rule {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #b9924a66,
-    transparent
-  );
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #b9924a66,
+            transparent
+        );
 }
 
-/* ---------------------------------------------------------
+/* -------------------------------------------------------
    INTRO
---------------------------------------------------------- */
+------------------------------------------------------- */
 
 .intro {
-  text-align: center;
-  padding: 50px 8px;
+    text-align: center;
+    padding: 50px 10px;
 }
 
 .intro h1 {
-  font-size: 36px;
-  font-weight: 800;
-  color: #e9e1cd;
-  margin: 14px 0 18px;
-  line-height: 1.15;
+    font-size: 38px;
+    font-weight: 800;
+    color: #e9e1cd;
+
+    margin: 16px 0 20px;
+
+    line-height: 1.15;
 }
 
 .intro p {
-  color: #a89c86;
-  font-size: 17px;
-  max-width: 500px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+    color: #a89c86;
+
+    font-size: 18px;
+
+    max-width: 520px;
+
+    margin:
+        0 auto 32px;
+
+    line-height: 1.6;
 }
 
-.intro .small-note {
-  margin-top: 20px;
-  font-size: 13px;
-  color: #71695b;
-}
-
-/* ---------------------------------------------------------
+/* -------------------------------------------------------
    BUTTONS
---------------------------------------------------------- */
-
-.btn-primary,
-.btn-ghost {
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 2px;
-  transition: all 0.15s ease;
-}
+------------------------------------------------------- */
 
 .btn-primary {
-  font-size: 13px;
-  background: #7c2029;
-  color: #f2e6d8;
-  border: 1px solid #a03039;
-  padding: 14px 28px;
+    font-family: "Oswald", sans-serif;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    font-size: 13px;
+
+    background: #7c2029;
+    color: #f2e6d8;
+
+    border: 1px solid #a03039;
+
+    padding: 15px 30px;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+
+    border-radius: 2px;
 }
 
 .btn-primary:hover {
-  background: #93262f;
-  transform: translateY(-1px);
+    background: #93262f;
+    transform: translateY(-1px);
 }
 
 .btn-ghost {
-  font-size: 12px;
-  background: transparent;
-  color: #b9924a;
-  border: 1px solid #b9924a55;
-  padding: 12px 22px;
+    font-family: "Oswald", sans-serif;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    font-size: 12px;
+
+    background: transparent;
+
+    color: #b9924a;
+
+    border: 1px solid #b9924a55;
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+
+    border-radius: 2px;
+
+    transition: 0.15s ease;
 }
 
 .btn-ghost:hover {
-  background: #b9924a1a;
+    background: #b9924a1a;
 }
 
-/* ---------------------------------------------------------
-   QUESTION HEADER
---------------------------------------------------------- */
+/* -------------------------------------------------------
+   QUESTIONS
+------------------------------------------------------- */
 
-.q-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
+.question-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-bottom: 8px;
 }
 
-.q-header .blood {
-  color: #7c2029;
+.question-number {
+    color: #9c8f6f;
 }
 
 .progress-track {
-  height: 2px;
-  background: #2a2426;
-  margin-bottom: 30px;
-  position: relative;
+    height: 2px;
+
+    background: #2a2426;
+
+    margin-bottom: 32px;
 }
 
 .progress-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: #b9924a;
-  transition: width 0.3s ease;
+    height: 100%;
+
+    background: #b9924a;
+
+    transition:
+        width 0.3s ease;
 }
 
-.q-title {
-  font-size: 25px;
-  font-weight: 700;
-  color: #e9e1cd;
-  margin-bottom: 24px;
-  line-height: 1.35;
+.question-title {
+    font-size: 26px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    margin-bottom: 28px;
 }
 
-.opt-btn {
-  text-align: left;
-  width: 100%;
-  padding: 17px 19px;
-  margin-bottom: 10px;
-  background: #19161a;
-  border: 1px solid #322b2c;
-  color: #e9e1cd;
-  font-family: 'Crimson Pro', serif;
-  font-size: 16px;
-  line-height: 1.4;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  display: block;
+.question-subtitle {
+    color: #9c8f6f;
+
+    font-size: 15px;
+
+    margin-top: -18px;
+
+    margin-bottom: 25px;
 }
 
-.opt-btn:hover {
-  border-color: #b9924a;
-  background: #221c1d;
-  transform: translateX(2px);
+.option {
+    width: 100%;
+
+    text-align: left;
+
+    padding: 18px 20px;
+
+    margin-bottom: 11px;
+
+    background: #19161a;
+
+    border: 1px solid #322b2c;
+
+    color: #e9e1cd;
+
+    font-size: 16px;
+
+    line-height: 1.45;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        transform 0.15s ease;
 }
 
-.opt-btn:focus-visible {
-  outline: 2px solid #b9924a;
-  outline-offset: 2px;
+.option:hover {
+    border-color: #b9924a;
+
+    background: #221c1d;
+
+    transform: translateX(3px);
 }
 
-/* ---------------------------------------------------------
+/* -------------------------------------------------------
    RESULTS
---------------------------------------------------------- */
+------------------------------------------------------- */
+
+.results {
+    padding-bottom: 40px;
+}
 
 .result-header {
-  text-align: center;
-  margin-bottom: 25px;
+    text-align: center;
+
+    margin-bottom: 30px;
 }
 
-.result-header h1 {
-  font-size: 31px;
-  margin: 10px 0;
+.result-title {
+    font-size: 34px;
+
+    margin:
+        10px 0 12px;
 }
 
-.result-header p {
-  color: #a89c86;
-  font-size: 16px;
-  line-height: 1.5;
-  max-width: 530px;
-  margin: auto;
+.result-description {
+    color: #b9ad95;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    max-width: 550px;
+
+    margin: auto;
 }
 
-.radar-wrap {
-  width: 100%;
-  margin: 15px 0;
-  display: flex;
-  justify-content: center;
+/* -------------------------------------------------------
+   PREFERENCE BARS
+------------------------------------------------------- */
+
+.preference-section {
+    margin: 35px 0;
 }
 
-.profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 18px;
-  margin: 25px 0 35px;
+.preference-row {
+    margin-bottom: 17px;
 }
 
-.profile-row {
-  display: grid;
-  grid-template-columns: 95px 1fr 38px;
-  gap: 7px;
-  align-items: center;
+.preference-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 6px;
 }
 
-.profile-name {
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #b8ad98;
-  font-size: 10px;
+.preference-name {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    color: #d8c79a;
 }
 
-.profile-bar {
-  height: 5px;
-  background: #292326;
-  overflow: hidden;
+.preference-percent {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 11px;
+
+    color: #9c8f6f;
 }
 
-.profile-fill {
-  height: 100%;
-  background: #7c2029;
+.preference-track {
+    height: 5px;
+
+    background: #2a2426;
+
+    border-radius: 1px;
+
+    overflow: hidden;
 }
 
-.profile-value {
-  font-family: 'Oswald', sans-serif;
-  color: #b9924a;
-  font-size: 10px;
-  text-align: right;
+.preference-fill {
+    height: 100%;
+
+    background: #7c2029;
 }
 
-/* ---------------------------------------------------------
-   ARCHETYPE
---------------------------------------------------------- */
+/* -------------------------------------------------------
+   RECOMMENDATIONS
+------------------------------------------------------- */
 
-.archetype-box {
-  text-align: center;
-  padding: 25px 15px;
-  margin-bottom: 35px;
+.recommendation {
+    background: #19161a;
+
+    border: 1px solid #322b2c;
+
+    padding: 24px;
+
+    margin-bottom: 14px;
+
+    border-radius: 2px;
 }
 
-.archetype-name {
-  font-size: 30px;
-  font-weight: 800;
-  color: #e9e1cd;
-  margin: 8px 0 12px;
+.recommendation.primary {
+    border-color: #b9924a88;
 }
 
-.archetype-quote {
-  font-style: italic;
-  color: #c9bda0;
-  font-size: 18px;
-  max-width: 500px;
-  margin: auto;
-  line-height: 1.6;
+.recommendation-rank {
+    font-family: "Oswald", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: #b9924a;
+
+    margin-bottom: 8px;
 }
 
-/* ---------------------------------------------------------
-   FACTION MATCHES
---------------------------------------------------------- */
+.recommendation-name {
+    font-family: "Cinzel", serif;
 
-.section-title {
-  text-align: center;
-  margin-bottom: 15px;
+    font-size: 23px;
+
+    margin-bottom: 8px;
 }
 
-.faction-card {
-  background: #19161a;
-  border: 1px solid #2a2426;
-  padding: 20px;
-  margin-bottom: 12px;
-  border-radius: 2px;
+.recommendation-score {
+    font-family: "Oswald", sans-serif;
+
+    color: #9c8f6f;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+    margin-bottom: 13px;
 }
 
-.faction-card.top-match {
-  border-color: #b9924a66;
+.recommendation-description {
+    color: #b9ad95;
+
+    line-height: 1.55;
+
+    margin-bottom: 16px;
 }
 
-.faction-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
+.match-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
 }
 
-.faction-name {
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
-  color: #e9e1cd;
+.match-tag {
+    padding: 5px 9px;
+
+    background: #211b1d;
+
+    border: 1px solid #b9924a44;
+
+    color: #d8c79a;
+
+    font-family: "Oswald", sans-serif;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
 }
 
-.match-score {
-  font-family: 'Oswald', sans-serif;
-  color: #b9924a;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+/* -------------------------------------------------------
+   WHY
+------------------------------------------------------- */
+
+.why-box {
+    background: #151216;
+
+    border-left: 2px solid #7c2029;
+
+    padding: 20px;
+
+    margin:
+        28px 0;
 }
 
-.match-bar {
-  height: 3px;
-  background: #2a2426;
-  margin-bottom: 15px;
+.why-box h3 {
+    font-family: "Cinzel", serif;
+
+    margin:
+        0 0 10px;
+
+    font-size: 18px;
 }
 
-.match-fill {
-  height: 100%;
-  background: #7c2029;
+.why-box p {
+    color: #b9ad95;
+
+    line-height: 1.6;
+
+    margin: 0;
 }
 
-.faction-reason {
-  color: #a89c86;
-  font-size: 15px;
-  line-height: 1.55;
+/* -------------------------------------------------------
+   RADAR
+------------------------------------------------------- */
+
+.radar {
+    display: flex;
+
+    justify-content: center;
+
+    margin:
+        10px 0 20px;
 }
 
-.trait-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 13px;
-}
-
-.chip {
-  font-family: 'Oswald', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 5px 9px;
-  border: 1px solid #b9924a44;
-  color: #d8c79a;
-  background: #1c1717;
-  border-radius: 2px;
-}
-
-/* ---------------------------------------------------------
-   ALTERNATIVE PATHS
---------------------------------------------------------- */
-
-.alternative-box {
-  background: #19161a;
-  border: 1px solid #2a2426;
-  padding: 20px;
-  margin: 28px 0;
-}
-
-.alternative-box h3 {
-  margin: 5px 0 10px;
-  font-family: 'Cinzel', serif;
-}
-
-.alternative-box p {
-  color: #a89c86;
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* ---------------------------------------------------------
-   RESPONSIVE
---------------------------------------------------------- */
+/* -------------------------------------------------------
+   MOBILE
+------------------------------------------------------- */
 
 @media (max-width: 600px) {
-  body {
-    padding: 25px 12px;
-  }
 
-  .intro h1 {
-    font-size: 30px;
-  }
+    body {
+        padding:
+            25px 12px;
+    }
 
-  .q-title {
-    font-size: 22px;
-  }
+    .intro h1 {
+        font-size: 31px;
+    }
 
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
+    .question-title {
+        font-size: 23px;
+    }
 
-  .faction-header {
-    align-items: flex-start;
-  }
+    .result-title {
+        font-size: 28px;
+    }
+
+    .recommendation {
+        padding: 19px;
+    }
 }
 </style>
 </head>
@@ -425,1253 +517,972 @@ body {
 <script>
 
 /* =========================================================
-   PLAYSTYLE TAXONOMY
+   40K PLAYSTYLE SYSTEM
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    We are NOT treating these as mutually exclusive classes.
+
+    A player can like:
+
+        Mobility + Durability
+
+    or:
+
+        Elite + Mobility + Synergy
+
+    or:
+
+        Mass + Firepower + Toolbox
+
+    The quiz discovers the combination.
+*/
+
+
+const MACROS = {
+
+    Firepower: {
+        description:
+            "How much you enjoy controlling the battlefield through shooting."
+    },
+
+    Mass: {
+        description:
+            "How much you enjoy winning through numbers and board presence."
+    },
+
+    Pressure: {
+        description:
+            "How much you enjoy forcing your opponent to respond to you."
+    },
+
+    Elite: {
+        description:
+            "How much you value powerful, important individual units."
+    },
+
+    Mobility: {
+        description:
+            "How important movement, positioning, and repositioning are to you."
+    },
+
+    Attrition: {
+        description:
+            "How much you enjoy surviving, trading, regenerating, and grinding."
+    },
+
+    Synergy: {
+        description:
+            "How much you enjoy building interactions between units and mechanics."
+    },
+
+    Ambush: {
+        description:
+            "How much you enjoy reserves, infiltration, surprise, and hidden threats."
+    },
+
+    Toolbox: {
+        description:
+            "How much you value having different tools and answers available."
+    }
+};
+
+
+/* =========================================================
+   GRANULAR ARCHETYPES
 ========================================================= */
 
 const ARCHETYPES = [
 
-  {
-    macro: "Firepower",
-    sub: "Static Gunline",
-    fantasy: "I establish firing positions and make crossing the table painful."
-  },
+    ["Firepower", "Static Gunline"],
+    ["Firepower", "Mobile Firepower"],
+    ["Firepower", "Artillery"],
+    ["Firepower", "Board-Control Firepower"],
 
-  {
-    macro: "Firepower",
-    sub: "Mobile Firepower",
-    fantasy: "I shoot you while constantly changing where the threat is."
-  },
+    ["Mass", "True Swarm"],
+    ["Mass", "Massed Infantry"],
+    ["Mass", "Mass Assault"],
+    ["Mass", "Disposable Forces"],
 
-  {
-    macro: "Firepower",
-    sub: "Artillery / Indirect Fire",
-    fantasy: "I don't necessarily need to see you to kill you."
-  },
+    ["Pressure", "Shock Assault"],
+    ["Pressure", "Surgical Assault"],
+    ["Pressure", "Mobile Threat"],
+    ["Pressure", "Psychological Pressure"],
 
-  {
-    macro: "Firepower",
-    sub: "Firepower + Board Control",
-    fantasy: "Shooting isn't the objective — shooting lets me control the battlefield."
-  },
+    ["Elite", "Pure Elite"],
+    ["Elite", "Deathball"],
+    ["Elite", "Elite Assault"],
+    ["Elite", "Elite Specialists"],
+    ["Elite", "Super-Heavy Elite"],
 
-  {
-    macro: "Mass",
-    sub: "True Swarm",
-    fantasy: "I want overwhelming numbers — the body count is itself the strategy."
-  },
+    ["Mobility", "Hit-and-Run"],
+    ["Mobility", "Board Control"],
+    ["Mobility", "Fast Assault"],
+    ["Mobility", "Evasion"],
+    ["Mobility", "Maneuver Warfare"],
 
-  {
-    macro: "Mass",
-    sub: "Massed Infantry",
-    fantasy: "I want lots of soldiers supporting a larger military machine."
-  },
+    ["Attrition", "Regeneration"],
+    ["Attrition", "Durability"],
+    ["Attrition", "Disposable Attrition"],
+    ["Attrition", "Grind"],
+    ["Attrition", "Trading"],
 
-  {
-    macro: "Mass",
-    sub: "Mass Assault",
-    fantasy: "There are so many threats coming at you that you can't stop them all."
-  },
+    ["Synergy", "Combo Engine"],
+    ["Synergy", "Buff Network"],
+    ["Synergy", "Resource Engine"],
+    ["Synergy", "Construction Engine"],
+    ["Synergy", "Tactical Synergy"],
 
-  {
-    macro: "Mass",
-    sub: "Disposable / Sacrificial",
-    fantasy: "Losing units is acceptable if they accomplished their job."
-  },
+    ["Ambush", "Deep Strike"],
+    ["Ambush", "Ambush"],
+    ["Ambush", "Infiltration"],
+    ["Ambush", "Reinforcement"],
+    ["Ambush", "Threat Projection"],
 
-  {
-    macro: "Pressure",
-    sub: "Shock Assault",
-    fantasy: "I hit you incredibly hard, immediately, with nothing held back."
-  },
+    ["Toolbox", "Generalist"],
+    ["Toolbox", "Specialist Toolbox"],
+    ["Toolbox", "Utility"],
+    ["Toolbox", "Combined Arms"],
+    ["Toolbox", "Adaptive"]
 
-  {
-    macro: "Pressure",
-    sub: "Surgical Assault",
-    fantasy: "I identify the important target and surgically destroy it."
-  },
-
-  {
-    macro: "Pressure",
-    sub: "Mass Assault",
-    fantasy: "There are too many threats to stop."
-  },
-
-  {
-    macro: "Pressure",
-    sub: "Mobile Threat",
-    fantasy: "You cannot safely ignore where my army is."
-  },
-
-  {
-    macro: "Pressure",
-    sub: "Psychological Pressure",
-    fantasy: "My positioning forces you to react to me before I've even acted."
-  },
-
-  {
-    macro: "Elite",
-    sub: "Pure Elite",
-    fantasy: "Every single model is valuable."
-  },
-
-  {
-    macro: "Elite",
-    sub: "Deathball",
-    fantasy: "I concentrate overwhelming power into a small number of units."
-  },
-
-  {
-    macro: "Elite",
-    sub: "Elite Assault",
-    fantasy: "Small numbers, enormous melee threat."
-  },
-
-  {
-    macro: "Elite",
-    sub: "Elite Specialists",
-    fantasy: "Every unit has a specific job."
-  },
-
-  {
-    macro: "Elite",
-    sub: "Super-Heavy Elite",
-    fantasy: "I want individual models to feel like bosses."
-  },
-
-  {
-    macro: "Mobility",
-    sub: "Hit-and-Run",
-    fantasy: "Attack, disengage, reposition."
-  },
-
-  {
-    macro: "Mobility",
-    sub: "Board Control",
-    fantasy: "Movement exists primarily to control objectives and space."
-  },
-
-  {
-    macro: "Mobility",
-    sub: "Fast Assault",
-    fantasy: "Movement exists to get into combat."
-  },
-
-  {
-    macro: "Mobility",
-    sub: "Evasion",
-    fantasy: "Don't fight fair — be somewhere else when the bad fight arrives."
-  },
-
-  {
-    macro: "Mobility",
-    sub: "Maneuver Warfare",
-    fantasy: "Positioning the whole army correctly is how I win."
-  },
-
-  {
-    macro: "Attrition",
-    sub: "Regeneration",
-    fantasy: "You killed it. It came back."
-  },
-
-  {
-    macro: "Attrition",
-    sub: "Durability",
-    fantasy: "Good luck killing this."
-  },
-
-  {
-    macro: "Attrition",
-    sub: "Disposable Attrition",
-    fantasy: "I don't care that you killed that unit."
-  },
-
-  {
-    macro: "Attrition",
-    sub: "Grind",
-    fantasy: "Every turn I make the position worse for you."
-  },
-
-  {
-    macro: "Attrition",
-    sub: "Trading",
-    fantasy: "I'll happily trade this unit for yours because the exchange benefits me."
-  },
-
-  {
-    macro: "Synergy",
-    sub: "Combo Engine",
-    fantasy: "I build an interaction that produces an enormous payoff."
-  },
-
-  {
-    macro: "Synergy",
-    sub: "Buff Network",
-    fantasy: "Units make other units better."
-  },
-
-  {
-    macro: "Synergy",
-    sub: "Resource Engine",
-    fantasy: "Managing a special resource is central to my strategy."
-  },
-
-  {
-    macro: "Synergy",
-    sub: "Detachment / Construction Engine",
-    fantasy: "The fun is constructing the machine."
-  },
-
-  {
-    macro: "Synergy",
-    sub: "Tactical Synergy",
-    fantasy: "My units are individually good, but together they're much better."
-  },
-
-  {
-    macro: "Ambush",
-    sub: "Deep Strike",
-    fantasy: "I want units to arrive exactly where needed."
-  },
-
-  {
-    macro: "Ambush",
-    sub: "Ambush",
-    fantasy: "I want my opponent to discover the threat too late."
-  },
-
-  {
-    macro: "Ambush",
-    sub: "Infiltration",
-    fantasy: "I want to start the game already somewhere unexpected."
-  },
-
-  {
-    macro: "Ambush",
-    sub: "Reinforcement",
-    fantasy: "My army keeps appearing throughout the battle."
-  },
-
-  {
-    macro: "Ambush",
-    sub: "Threat Projection",
-    fantasy: "Even when I'm not there, you have to account for me."
-  },
-
-  {
-    macro: "Toolbox",
-    sub: "Generalist",
-    fantasy: "Give me a solution for everything."
-  },
-
-  {
-    macro: "Toolbox",
-    sub: "Specialist Toolbox",
-    fantasy: "I have very specialized units for very specific problems."
-  },
-
-  {
-    macro: "Toolbox",
-    sub: "Utility",
-    fantasy: "I don't necessarily kill things — I manipulate the battlefield."
-  },
-
-  {
-    macro: "Toolbox",
-    sub: "Combined Arms",
-    fantasy: "Infantry, vehicles, shooting, melee — give me the whole military."
-  },
-
-  {
-    macro: "Toolbox",
-    sub: "Adaptive",
-    fantasy: "I want to change my plan depending on my opponent."
-  }
-
-];
-
-const MACROS = [
-  "Firepower",
-  "Mass",
-  "Pressure",
-  "Elite",
-  "Mobility",
-  "Attrition",
-  "Synergy",
-  "Ambush",
-  "Toolbox"
-];
+].map(([macro, sub]) => ({
+    macro,
+    sub
+}));
 
 
 /* =========================================================
-   FACTION PROFILES
+   FACTION DATA
 
-   These are PLAYSTYLE coordinates.
-   They are not power rankings.
+   This is where the actual recommendation engine lives.
+
+   These values are intentionally NOT "how strong is this
+   faction?"
+
+   They represent how strongly the faction expresses a
+   particular playstyle.
+
+   We can later tune these using actual army rules.
 ========================================================= */
 
-const FACTIONS = [
+const FACTIONS = {
 
-  {
-    name: "Blood Angels",
+    "Space Marines": {
+        scores: {
+            Firepower: 6,
+            Mass: 4,
+            Pressure: 6,
+            Elite: 6,
+            Mobility: 5,
+            Attrition: 5,
+            Synergy: 7,
+            Ambush: 5,
+            Toolbox: 10
+        },
 
-    profile: {
-      Firepower: 4,
-      Mass: 2,
-      Pressure: 10,
-      Elite: 8,
-      Mobility: 8,
-      Attrition: 6,
-      Synergy: 6,
-      Ambush: 5,
-      Toolbox: 6
+        styles: [
+            "Generalist",
+            "Combined Arms",
+            "Tactical Synergy",
+            "Adaptive"
+        ],
+
+        description:
+            "A broad toolbox army that can build toward many different battlefield roles."
     },
 
-    strengths: [
-      "Pressure",
-      "Mobility",
-      "Elite"
-    ],
+    "Aeldari": {
+        scores: {
+            Firepower: 7,
+            Mass: 2,
+            Pressure: 8,
+            Elite: 7,
+            Mobility: 10,
+            Attrition: 3,
+            Synergy: 8,
+            Ambush: 8,
+            Toolbox: 8
+        },
 
-    description:
-      "A strong fit for players who want elite units that move aggressively and create decisive melee threats."
-  },
+        styles: [
+            "Mobile Firepower",
+            "Hit-and-Run",
+            "Evasion",
+            "Surgical Assault",
+            "Maneuver Warfare"
+        ],
 
-  {
-    name: "Grey Knights",
-
-    profile: {
-      Firepower: 6,
-      Mass: 2,
-      Pressure: 8,
-      Elite: 10,
-      Mobility: 9,
-      Attrition: 5,
-      Synergy: 8,
-      Ambush: 10,
-      Toolbox: 7
+        description:
+            "A highly mobile army that rewards precision, positioning, and choosing the right fight."
     },
 
-    strengths: [
-      "Elite",
-      "Mobility",
-      "Ambush"
-    ],
+    "Necrons": {
+        scores: {
+            Firepower: 6,
+            Mass: 6,
+            Pressure: 6,
+            Elite: 7,
+            Mobility: 7,
+            Attrition: 10,
+            Synergy: 7,
+            Ambush: 5,
+            Toolbox: 7
+        },
 
-    description:
-      "A strong fit for players who enjoy elite specialists, mobility, teleportation and precise threat projection."
-  },
+        styles: [
+            "Regeneration",
+            "Durability",
+            "Grind",
+            "Board Control"
+        ],
 
-  {
-    name: "Death Guard",
-
-    profile: {
-      Firepower: 5,
-      Mass: 5,
-      Pressure: 6,
-      Elite: 6,
-      Mobility: 3,
-      Attrition: 10,
-      Synergy: 5,
-      Ambush: 2,
-      Toolbox: 5
+        description:
+            "A resilient army that combines board control with units that can be extremely difficult to permanently remove."
     },
 
-    strengths: [
-      "Attrition",
-      "Durability",
-      "Grind"
-    ],
+    "Death Guard": {
+        scores: {
+            Firepower: 5,
+            Mass: 5,
+            Pressure: 7,
+            Elite: 7,
+            Mobility: 3,
+            Attrition: 10,
+            Synergy: 7,
+            Ambush: 3,
+            Toolbox: 6
+        },
 
-    description:
-      "A strong fit for players who want durable units, grinding pressure and an army that refuses to disappear."
-  },
+        styles: [
+            "Durability",
+            "Grind",
+            "Attrition"
+        ],
 
-  {
-    name: "Aeldari",
-
-    profile: {
-      Firepower: 8,
-      Mass: 3,
-      Pressure: 8,
-      Elite: 7,
-      Mobility: 10,
-      Attrition: 3,
-      Synergy: 9,
-      Ambush: 8,
-      Toolbox: 9
+        description:
+            "A slow, durable force that turns the battlefield into an increasingly unpleasant place to stand."
     },
 
-    strengths: [
-      "Mobility",
-      "Synergy",
-      "Precision"
-    ],
+    "Blood Angels": {
+        scores: {
+            Firepower: 4,
+            Mass: 4,
+            Pressure: 10,
+            Elite: 8,
+            Mobility: 8,
+            Attrition: 6,
+            Synergy: 6,
+            Ambush: 6,
+            Toolbox: 6
+        },
 
-    description:
-      "A strong fit for players who want extreme mobility, precision and a large number of tactical options."
-  },
+        styles: [
+            "Elite Assault",
+            "Surgical Assault",
+            "Fast Assault"
+        ],
 
-  {
-    name: "Deathwatch",
-
-    profile: {
-      Firepower: 7,
-      Mass: 2,
-      Pressure: 6,
-      Elite: 9,
-      Mobility: 6,
-      Attrition: 6,
-      Synergy: 9,
-      Ambush: 5,
-      Toolbox: 10
+        description:
+            "An aggressive elite force built around speed, melee pressure, and decisive attacks."
     },
 
-    strengths: [
-      "Elite",
-      "Specialists",
-      "Toolbox"
-    ],
+    "Grey Knights": {
+        scores: {
+            Firepower: 6,
+            Mass: 2,
+            Pressure: 8,
+            Elite: 9,
+            Mobility: 9,
+            Attrition: 6,
+            Synergy: 8,
+            Ambush: 10,
+            Toolbox: 7
+        },
 
-    description:
-      "A strong fit for players who enjoy specialized units, tactical flexibility and building an answer for specific problems."
-  },
+        styles: [
+            "Deep Strike",
+            "Elite Specialists",
+            "Threat Projection",
+            "Surgical Assault"
+        ],
 
-  {
-    name: "Necrons",
-
-    profile: {
-      Firepower: 7,
-      Mass: 5,
-      Pressure: 5,
-      Elite: 7,
-      Mobility: 5,
-      Attrition: 10,
-      Synergy: 7,
-      Ambush: 4,
-      Toolbox: 7
+        description:
+            "A small elite force that combines powerful specialists with exceptional positional flexibility."
     },
 
-    strengths: [
-      "Attrition",
-      "Board Control",
-      "Regeneration"
-    ],
+    "Deathwatch": {
+        scores: {
+            Firepower: 7,
+            Mass: 2,
+            Pressure: 6,
+            Elite: 9,
+            Mobility: 5,
+            Attrition: 6,
+            Synergy: 8,
+            Ambush: 6,
+            Toolbox: 10
+        },
 
-    description:
-      "A strong fit for players who enjoy resilience, board control and the satisfaction of units returning after being destroyed."
-  },
+        styles: [
+            "Elite Specialists",
+            "Specialist Toolbox",
+            "Tactical Synergy"
+        ],
 
-  {
-    name: "Astra Militarum",
-
-    profile: {
-      Firepower: 10,
-      Mass: 9,
-      Pressure: 4,
-      Elite: 3,
-      Mobility: 4,
-      Attrition: 7,
-      Synergy: 6,
-      Ambush: 3,
-      Toolbox: 9
+        description:
+            "An elite specialist force where individual units can be built around specific battlefield jobs."
     },
 
-    strengths: [
-      "Firepower",
-      "Mass",
-      "Combined Arms"
-    ],
+    "Astra Militarum": {
+        scores: {
+            Firepower: 10,
+            Mass: 10,
+            Pressure: 5,
+            Elite: 2,
+            Mobility: 5,
+            Attrition: 8,
+            Synergy: 7,
+            Ambush: 3,
+            Toolbox: 9
+        },
 
-    description:
-      "A strong fit for players who want a conventional military force built around infantry, armor, artillery and overwhelming firepower."
-  },
+        styles: [
+            "Static Gunline",
+            "Artillery",
+            "Massed Infantry",
+            "Combined Arms"
+        ],
 
-  {
-    name: "Orks",
-
-    profile: {
-      Firepower: 4,
-      Mass: 10,
-      Pressure: 9,
-      Elite: 3,
-      Mobility: 7,
-      Attrition: 7,
-      Synergy: 5,
-      Ambush: 4,
-      Toolbox: 4
+        description:
+            "A mass military force combining infantry, armor, artillery, and overwhelming firepower."
     },
 
-    strengths: [
-      "Mass",
-      "Pressure",
-      "Assault"
-    ],
+    "Tyranids": {
+        scores: {
+            Firepower: 5,
+            Mass: 10,
+            Pressure: 9,
+            Elite: 5,
+            Mobility: 7,
+            Attrition: 7,
+            Synergy: 7,
+            Ambush: 8,
+            Toolbox: 7
+        },
 
-    description:
-      "A strong fit for players who enjoy overwhelming pressure, large numbers and aggressive attacks."
-  },
+        styles: [
+            "True Swarm",
+            "Mass Assault",
+            "Disposable Attrition",
+            "Infiltration"
+        ],
 
-  {
-    name: "Tyranids",
-
-    profile: {
-      Firepower: 5,
-      Mass: 10,
-      Pressure: 8,
-      Elite: 4,
-      Mobility: 7,
-      Attrition: 7,
-      Synergy: 7,
-      Ambush: 7,
-      Toolbox: 6
+        description:
+            "An adaptable alien swarm capable of overwhelming the battlefield through numbers, pressure, and specialized organisms."
     },
 
-    strengths: [
-      "Mass",
-      "Pressure",
-      "Board Control"
-    ],
+    "Orks": {
+        scores: {
+            Firepower: 5,
+            Mass: 10,
+            Pressure: 10,
+            Elite: 4,
+            Mobility: 7,
+            Attrition: 6,
+            Synergy: 6,
+            Ambush: 5,
+            Toolbox: 6
+        },
 
-    description:
-      "A strong fit for players who want to overwhelm the table with numbers, threats and constant pressure."
-  },
+        styles: [
+            "Mass Assault",
+            "True Swarm",
+            "Fast Assault",
+            "Pressure"
+        ],
 
-  {
-    name: "Adeptus Custodes",
-
-    profile: {
-      Firepower: 5,
-      Mass: 1,
-      Pressure: 8,
-      Elite: 10,
-      Mobility: 5,
-      Attrition: 9,
-      Synergy: 6,
-      Ambush: 4,
-      Toolbox: 5
+        description:
+            "A huge, aggressive army that overwhelms opponents through pressure, numbers, and violence."
     },
 
-    strengths: [
-      "Elite",
-      "Durability",
-      "Deathball"
-    ],
+    "Adeptus Custodes": {
+        scores: {
+            Firepower: 5,
+            Mass: 1,
+            Pressure: 7,
+            Elite: 10,
+            Mobility: 5,
+            Attrition: 10,
+            Synergy: 7,
+            Ambush: 4,
+            Toolbox: 5
+        },
 
-    description:
-      "A strong fit for players who want every model to feel valuable, powerful and difficult to remove."
-  },
+        styles: [
+            "Pure Elite",
+            "Deathball",
+            "Elite Assault",
+            "Durability"
+        ],
 
-  {
-    name: "Space Marines",
-
-    profile: {
-      Firepower: 7,
-      Mass: 4,
-      Pressure: 7,
-      Elite: 7,
-      Mobility: 6,
-      Attrition: 6,
-      Synergy: 8,
-      Ambush: 6,
-      Toolbox: 10
+        description:
+            "An extremely elite army where individual models and units carry enormous importance."
     },
 
-    strengths: [
-      "Toolbox",
-      "Combined Arms",
-      "Adaptability"
-    ],
+    "T'au Empire": {
+        scores: {
+            Firepower: 10,
+            Mass: 5,
+            Pressure: 5,
+            Elite: 6,
+            Mobility: 8,
+            Attrition: 5,
+            Synergy: 9,
+            Ambush: 5,
+            Toolbox: 7
+        },
 
-    description:
-      "A strong fit for players who want a flexible army capable of approaching the battlefield in many different ways."
-  },
+        styles: [
+            "Mobile Firepower",
+            "Board-Control Firepower",
+            "Buff Network",
+            "Maneuver Warfare"
+        ],
 
-  {
-    name: "T'au Empire",
-
-    profile: {
-      Firepower: 10,
-      Mass: 4,
-      Pressure: 5,
-      Elite: 6,
-      Mobility: 8,
-      Attrition: 4,
-      Synergy: 9,
-      Ambush: 5,
-      Toolbox: 8
+        description:
+            "A shooting-focused army that rewards positioning, coordination, and controlling the battlefield from range."
     },
 
-    strengths: [
-      "Firepower",
-      "Mobility",
-      "Synergy"
-    ],
+    "Drukhari": {
+        scores: {
+            Firepower: 7,
+            Mass: 5,
+            Pressure: 9,
+            Elite: 5,
+            Mobility: 10,
+            Attrition: 3,
+            Synergy: 7,
+            Ambush: 8,
+            Toolbox: 6
+        },
 
-    description:
-      "A strong fit for players who enjoy ranged warfare, mobility and coordinating multiple units into a firing network."
-  },
+        styles: [
+            "Hit-and-Run",
+            "Evasion",
+            "Mobile Threat",
+            "Trading"
+        ],
 
-  {
-    name: "Drukhari",
-
-    profile: {
-      Firepower: 7,
-      Mass: 4,
-      Pressure: 9,
-      Elite: 6,
-      Mobility: 10,
-      Attrition: 3,
-      Synergy: 7,
-      Ambush: 8,
-      Toolbox: 7
+        description:
+            "An extremely fast army that relies on speed, aggression, and choosing when engagements happen."
     },
 
-    strengths: [
-      "Mobility",
-      "Pressure",
-      "Evasion"
-    ],
+    "Chaos Space Marines": {
+        scores: {
+            Firepower: 7,
+            Mass: 5,
+            Pressure: 8,
+            Elite: 7,
+            Mobility: 6,
+            Attrition: 6,
+            Synergy: 9,
+            Ambush: 6,
+            Toolbox: 8
+        },
 
-    description:
-      "A strong fit for players who want speed, aggression and the ability to choose when and where fights happen."
-  },
+        styles: [
+            "Adaptive",
+            "Construction Engine",
+            "Tactical Synergy",
+            "Combined Arms"
+        ],
 
-  {
-    name: "Space Wolves",
+        description:
+            "A flexible force that rewards list construction, combinations, and adapting its tools to the opponent."
+    }
 
-    profile: {
-      Firepower: 4,
-      Mass: 4,
-      Pressure: 9,
-      Elite: 8,
-      Mobility: 8,
-      Attrition: 7,
-      Synergy: 6,
-      Ambush: 5,
-      Toolbox: 6
-    },
-
-    strengths: [
-      "Pressure",
-      "Elite",
-      "Mobility"
-    ],
-
-    description:
-      "A strong fit for players who want durable elite warriors that can move aggressively into combat."
-  },
-
-  {
-    name: "Black Templars",
-
-    profile: {
-      Firepower: 3,
-      Mass: 5,
-      Pressure: 10,
-      Elite: 8,
-      Mobility: 6,
-      Attrition: 8,
-      Synergy: 5,
-      Ambush: 3,
-      Toolbox: 5
-    },
-
-    strengths: [
-      "Pressure",
-      "Elite Assault",
-      "Durability"
-    ],
-
-    description:
-      "A strong fit for players who want an aggressive melee army built around resilient elite warriors."
-  }
-
-];
+};
 
 
 /* =========================================================
    QUESTIONS
 
-   Each answer affects broad preferences AND specific
-   archetypes.
+   Notice that these questions DON'T say:
+
+       "Do you like Mobility?"
+
+   Instead they present a fantasy or decision.
+
+   One answer can contribute to several preferences.
 ========================================================= */
 
 const QUESTIONS = [
 
-  {
-    text: "The turn begins. Where do you want your army to be?",
-
-    options: [
-
-      {
-        label: "Dug into fixed firing positions, making them cross open ground to reach me",
-
-        macro: {
-          Firepower: 4,
-          Mobility: -1
-        },
-
-        archetypes: {
-          "Firepower|Static Gunline": 4,
-          "Firepower|Firepower + Board Control": 1
-        }
-      },
-
-      {
-        label: "Already moving, repositioning before they can pin me down",
-
-        macro: {
-          Mobility: 4,
-          Pressure: 2
-        },
-
-        archetypes: {
-          "Mobility|Hit-and-Run": 3,
-          "Pressure|Mobile Threat": 1
-        }
-      },
-
-      {
-        label: "Not on the table yet — arriving exactly where it hurts",
-
-        macro: {
-          Ambush: 5,
-          Pressure: 2
-        },
-
-        archetypes: {
-          "Ambush|Deep Strike": 3,
-          "Ambush|Threat Projection": 1
-        }
-      },
-
-      {
-        label: "Already in their face, blades drawn",
-
-        macro: {
-          Pressure: 5,
-          Elite: 2,
-          Mobility: 2
-        },
-
-        archetypes: {
-          "Pressure|Shock Assault": 3,
-          "Elite|Elite Assault": 1
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "How do you feel about losing models?",
-
-    options: [
-
-      {
-        label: "Doesn't matter — there's always more where that came from",
-
-        macro: {
-          Mass: 5,
-          Attrition: 4,
-          Elite: -3
-        },
-
-        archetypes: {
-          "Mass|Disposable / Sacrificial": 3,
-          "Attrition|Disposable Attrition": 2
-        }
-      },
-
-      {
-        label: "Every model matters, and I protect them fiercely",
-
-        macro: {
-          Elite: 5,
-          Attrition: 4,
-          Mass: -3
-        },
-
-        archetypes: {
-          "Elite|Pure Elite": 3,
-          "Attrition|Durability": 2
-        }
-      },
-
-      {
-        label: "Fine, as long as I got something better in the trade",
-
-        macro: {
-          Attrition: 4,
-          Pressure: 2,
-          Elite: 2
-        },
-
-        archetypes: {
-          "Attrition|Trading": 3,
-          "Pressure|Surgical Assault": 1
-        }
-      },
-
-      {
-        label: "Doesn't matter — it'll get back up anyway",
-
-        macro: {
-          Attrition: 6
-        },
-
-        archetypes: {
-          "Attrition|Regeneration": 5
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "What's your list-building philosophy?",
-
-    options: [
-
-      {
-        label: "Build an interaction that produces an enormous payoff",
-
-        macro: {
-          Synergy: 6
-        },
-
-        archetypes: {
-          "Synergy|Combo Engine": 4,
-          "Synergy|Resource Engine": 1
-        }
-      },
-
-      {
-        label: "Make every unit a little better because of the others around it",
-
-        macro: {
-          Synergy: 5,
-          Toolbox: 2
-        },
-
-        archetypes: {
-          "Synergy|Buff Network": 3,
-          "Synergy|Tactical Synergy": 2
-        }
-      },
-
-      {
-        label: "Construct the perfect detachment before the game even starts",
-
-        macro: {
-          Synergy: 6
-        },
-
-        archetypes: {
-          "Synergy|Detachment / Construction Engine": 5
-        }
-      },
-
-      {
-        label: "Keep it flexible and adapt once I see what I'm facing",
-
-        macro: {
-          Toolbox: 6,
-          Synergy: 2
-        },
-
-        archetypes: {
-          "Toolbox|Adaptive": 4,
-          "Toolbox|Generalist": 1
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "Your opponent has one juicy high-value target. What's your instinct?",
-
-    options: [
-
-      {
-        label: "Send my best unit to surgically remove it",
-
-        macro: {
-          Pressure: 5,
-          Elite: 3
-        },
-
-        archetypes: {
-          "Pressure|Surgical Assault": 4,
-          "Elite|Elite Specialists": 1
-        }
-      },
-
-      {
-        label: "Throw overwhelming numbers at it until it dies",
-
-        macro: {
-          Mass: 5,
-          Pressure: 4
-        },
-
-        archetypes: {
-          "Mass|Mass Assault": 4,
-          "Pressure|Mass Assault": 1
-        }
-      },
-
-      {
-        label: "Concentrate my whole army into one devastating blow",
-
-        macro: {
-          Elite: 5,
-          Pressure: 4
-        },
-
-        archetypes: {
-          "Elite|Deathball": 4,
-          "Elite|Super-Heavy Elite": 1
-        }
-      },
-
-      {
-        label: "Ignore it — I'm busy controlling the rest of the board",
-
-        macro: {
-          Mobility: 4,
-          Firepower: 3,
-          Toolbox: 2
-        },
-
-        archetypes: {
-          "Mobility|Board Control": 3,
-          "Firepower|Firepower + Board Control": 2
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "How do you want your opponent to feel on turn one?",
-
-    options: [
-
-      {
-        label: "Already worried, before I've even moved",
-
-        macro: {
-          Pressure: 5,
-          Ambush: 3
-        },
-
-        archetypes: {
-          "Pressure|Psychological Pressure": 4,
-          "Ambush|Threat Projection": 1
-        }
-      },
-
-      {
-        label: "Confused about where the real threat actually is",
-
-        macro: {
-          Mobility: 5,
-          Ambush: 3
-        },
-
-        archetypes: {
-          "Mobility|Evasion": 3,
-          "Firepower|Mobile Firepower": 2
-        }
-      },
-
-      {
-        label: "Certain death is coming — they just don't know when",
-
-        macro: {
-          Firepower: 6,
-          Pressure: 2
-        },
-
-        archetypes: {
-          "Firepower|Artillery / Indirect Fire": 4
-        }
-      },
-
-      {
-        label: "Overrun and outnumbered",
-
-        macro: {
-          Mass: 6,
-          Pressure: 3
-        },
-
-        archetypes: {
-          "Mass|True Swarm": 5
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "Pick a close-combat philosophy.",
-
-    options: [
-
-      {
-        label: "Hit hard, immediately, everything committed",
-
-        macro: {
-          Pressure: 6,
-          Elite: 3
-        },
-
-        archetypes: {
-          "Pressure|Shock Assault": 4,
-          "Elite|Elite Assault": 2
-        }
-      },
-
-      {
-        label: "In, kill, out — before they can retaliate",
-
-        macro: {
-          Mobility: 6,
-          Pressure: 3
-        },
-
-        archetypes: {
-          "Mobility|Hit-and-Run": 4,
-          "Mobility|Fast Assault": 2
-        }
-      },
-
-      {
-        label: "Don't fight fair — just don't be there when it goes wrong",
-
-        macro: {
-          Mobility: 6,
-          Attrition: -2
-        },
-
-        archetypes: {
-          "Mobility|Evasion": 5
-        }
-      },
-
-      {
-        label: "Grind them down, turn after turn",
-
-        macro: {
-          Attrition: 6,
-          Pressure: 3
-        },
-
-        archetypes: {
-          "Attrition|Grind": 4,
-          "Attrition|Durability": 1
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "Beyond killing things, what's your army's real job?",
-
-    options: [
-
-      {
-        label: "Controlling objectives and space through constant movement",
-
-        macro: {
-          Mobility: 6,
-          Toolbox: 3
-        },
-
-        archetypes: {
-          "Mobility|Board Control": 4,
-          "Mobility|Maneuver Warfare": 2
-        }
-      },
-
-      {
-        label: "Manipulating the battlefield without necessarily killing anything",
-
-        macro: {
-          Toolbox: 7
-        },
-
-        archetypes: {
-          "Toolbox|Utility": 5
-        }
-      },
-
-      {
-        label: "Having an answer for literally every problem",
-
-        macro: {
-          Toolbox: 7,
-          Synergy: 2
-        },
-
-        archetypes: {
-          "Toolbox|Generalist": 5
-        }
-      },
-
-      {
-        label: "Making sure the whole army is positioned exactly right",
-
-        macro: {
-          Mobility: 6,
-          Toolbox: 2
-        },
-
-        archetypes: {
-          "Mobility|Maneuver Warfare": 5
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "What's most satisfying to you at the table?",
-
-    options: [
-
-      {
-        label: "Killing something that never even saw me",
-
-        macro: {
-          Firepower: 6,
-          Ambush: 2
-        },
-
-        archetypes: {
-          "Firepower|Artillery / Indirect Fire": 4
-        }
-      },
-
-      {
-        label: "A unit so tough my opponent gives up trying to kill it",
-
-        macro: {
-          Attrition: 7,
-          Elite: 3
-        },
-
-        archetypes: {
-          "Attrition|Durability": 5,
-          "Elite|Pure Elite": 1
-        }
-      },
-
-      {
-        label: "A resource or mechanic I get to carefully manage",
-
-        macro: {
-          Synergy: 7
-        },
-
-        archetypes: {
-          "Synergy|Resource Engine": 5
-        }
-      },
-
-      {
-        label: "One small elite unit soloing their entire army",
-
-        macro: {
-          Elite: 7,
-          Pressure: 4
-        },
-
-        archetypes: {
-          "Elite|Super-Heavy Elite": 4,
-          "Elite|Deathball": 2
-        }
-      }
-
-    ]
-  },
-
-
-  {
-    text: "How do you want your army to feel?",
-
-    options: [
-
-      {
-        label: "Overwhelming",
-
-        macro: {
-          Mass: 7,
-          Pressure: 4
-        },
-
-        archetypes: {
-          "Mass|True Swarm": 5
-        }
-      },
-
-      {
-        label: "Precise",
-
-        macro: {
-          Elite: 5,
-          Pressure: 5,
-          Mobility: 2
-        },
-
-        archetypes: {
-          "Elite|Elite Specialists": 4,
-          "Pressure|Surgical Assault": 2
-        }
-      },
-
-      {
-        label: "Relentless",
-
-        macro: {
-          Attrition: 7,
-          Pressure: 3
-        },
-
-        archetypes: {
-          "Attrition|Grind": 5
-        }
-      },
-
-      {
-        label: "Unpredictable",
-
-        macro: {
-          Mobility: 5,
-          Ambush: 5,
-          Pressure: 3
-        },
-
-        archetypes: {
-          "Mobility|Evasion": 3,
-          "Pressure|Psychological Pressure": 2
-        }
-      }
-
-    ]
-  }
+    {
+        text:
+            "You have one opportunity to change the way the battle unfolds. What sounds most satisfying?",
+
+        options: [
+
+            {
+                text:
+                    "Move a key unit into exactly the right position and completely change the threat.",
+                scores: {
+                    Mobility: 3,
+                    Pressure: 2,
+                    Ambush: 1
+                }
+            },
+
+            {
+                text:
+                    "Put an enormous amount of force into one location and make it impossible to survive.",
+                scores: {
+                    Elite: 2,
+                    Pressure: 3,
+                    Firepower: 1
+                }
+            },
+
+            {
+                text:
+                    "Make the opponent deal with five different problems at once.",
+                scores: {
+                    Mass: 2,
+                    Toolbox: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "Set up a situation where whatever they do, my army benefits.",
+                scores: {
+                    Synergy: 3,
+                    Attrition: 2,
+                    Toolbox: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Your opponent destroys one of your best units. Your reaction is:",
+
+        options: [
+
+            {
+                text:
+                    "Good. It did its job. Now I make them pay for the trade.",
+                scores: {
+                    Attrition: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "That shouldn't have happened. I need to reposition and prevent it happening again.",
+                scores: {
+                    Mobility: 3,
+                    Elite: 2
+                }
+            },
+
+            {
+                text:
+                    "That's fine. I have another wave behind it.",
+                scores: {
+                    Mass: 3,
+                    Attrition: 2
+                }
+            },
+
+            {
+                text:
+                    "Wait until they realize they didn't actually remove the problem.",
+                scores: {
+                    Attrition: 3,
+                    Synergy: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Which battlefield situation sounds most fun?",
+
+        options: [
+
+            {
+                text:
+                    "A carefully constructed firing lane where every enemy movement is dangerous.",
+                scores: {
+                    Firepower: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "A chaotic melee where my opponent has more threats than they can handle.",
+                scores: {
+                    Pressure: 3,
+                    Mass: 3
+                }
+            },
+
+            {
+                text:
+                    "A tense positioning game where one mistake decides which unit gets hit.",
+                scores: {
+                    Mobility: 3,
+                    Elite: 2
+                }
+            },
+
+            {
+                text:
+                    "A slow battle where my opponent gradually realizes they cannot remove me.",
+                scores: {
+                    Attrition: 3,
+                    Elite: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Imagine you're building your army from scratch. What sounds most appealing?",
+
+        options: [
+
+            {
+                text:
+                    "A collection of specialists, each designed to solve a particular problem.",
+                scores: {
+                    Toolbox: 3,
+                    Elite: 2,
+                    Synergy: 1
+                }
+            },
+
+            {
+                text:
+                    "A tightly connected machine where every unit makes another unit better.",
+                scores: {
+                    Synergy: 3,
+                    Toolbox: 2
+                }
+            },
+
+            {
+                text:
+                    "A huge force where losing individual units barely changes the plan.",
+                scores: {
+                    Mass: 3,
+                    Attrition: 2
+                }
+            },
+
+            {
+                text:
+                    "A small number of extremely powerful units that I build the army around.",
+                scores: {
+                    Elite: 3,
+                    Attrition: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Your opponent has a unit sitting safely behind their lines. You want it gone.",
+
+        options: [
+
+            {
+                text:
+                    "I'll get there. Give me a few turns and I'll maneuver around them.",
+                scores: {
+                    Mobility: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "I'll put something there that they weren't expecting.",
+                scores: {
+                    Ambush: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "I'll simply shoot it until hiding doesn't matter.",
+                scores: {
+                    Firepower: 3
+                }
+            },
+
+            {
+                text:
+                    "I'll ignore it if killing it isn't necessary to winning the board.",
+                scores: {
+                    Toolbox: 2,
+                    Mobility: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "What feels better than it probably should?",
+
+        options: [
+
+            {
+                text:
+                    "Watching an enemy charge something that is much harder to kill than expected.",
+                scores: {
+                    Attrition: 3,
+                    Elite: 2
+                }
+            },
+
+            {
+                text:
+                    "Removing an important enemy unit before it can do anything meaningful.",
+                scores: {
+                    Pressure: 3,
+                    Elite: 2
+                }
+            },
+
+            {
+                text:
+                    "Having units appear somewhere your opponent completely forgot about.",
+                scores: {
+                    Ambush: 3,
+                    Mobility: 2
+                }
+            },
+
+            {
+                text:
+                    "Seeing the entire army work together exactly as planned.",
+                scores: {
+                    Synergy: 3,
+                    Toolbox: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Which kind of mistake would you rather punish?",
+
+        options: [
+
+            {
+                text:
+                    "They left something exposed.",
+                scores: {
+                    Firepower: 2,
+                    Pressure: 3
+                }
+            },
+
+            {
+                text:
+                    "They moved into the wrong position.",
+                scores: {
+                    Mobility: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "They underestimated how many threats I could put into one area.",
+                scores: {
+                    Mass: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "They didn't understand the interaction between my units.",
+                scores: {
+                    Synergy: 3,
+                    Toolbox: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "How complicated do you want your army to feel?",
+
+        options: [
+
+            {
+                text:
+                    "Simple enough that I can focus on the battlefield.",
+                scores: {
+                    Toolbox: 2,
+                    Mass: 2
+                }
+            },
+
+            {
+                text:
+                    "I want meaningful decisions every turn.",
+                scores: {
+                    Mobility: 2,
+                    Toolbox: 2,
+                    Synergy: 2
+                }
+            },
+
+            {
+                text:
+                    "Give me a complicated machine. I'll learn it.",
+                scores: {
+                    Synergy: 3,
+                    Toolbox: 2
+                }
+            },
+
+            {
+                text:
+                    "I want a few extremely powerful decisions rather than dozens of small ones.",
+                scores: {
+                    Elite: 3,
+                    Pressure: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Your ideal victory looks like:",
+
+        options: [
+
+            {
+                text:
+                    "I controlled where the fight happened.",
+                scores: {
+                    Mobility: 3,
+                    Pressure: 2
+                }
+            },
+
+            {
+                text:
+                    "I survived everything they threw at me.",
+                scores: {
+                    Attrition: 3,
+                    Elite: 2
+                }
+            },
+
+            {
+                text:
+                    "I overwhelmed them before they could stabilize.",
+                scores: {
+                    Mass: 3,
+                    Pressure: 3
+                }
+            },
+
+            {
+                text:
+                    "I solved every problem they gave me.",
+                scores: {
+                    Toolbox: 3,
+                    Synergy: 2
+                }
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Which statement sounds most like you?",
+
+        options: [
+
+            {
+                text:
+                    "I want my opponent to be afraid of what happens if they move.",
+                scores: {
+                    Pressure: 3,
+                    Firepower: 2
+                }
+            },
+
+            {
+                text:
+                    "I want my opponent to never know where the real threat is.",
+                scores: {
+                    Mobility: 3,
+                    Ambush: 2
+                }
+            },
+
+            {
+                text:
+                    "I want my opponent to realize they simply cannot kill enough of my army.",
+                scores: {
+                    Mass: 3,
+                    Attrition: 3
+                }
+            },
+
+            {
+                text:
+                    "I want my army to have an answer for whatever they bring.",
+                scores: {
+                    Toolbox: 3,
+                    Synergy: 2
+                }
+            }
+
+        ]
+    }
 
 ];
 
@@ -1680,213 +1491,194 @@ const QUESTIONS = [
    STATE
 ========================================================= */
 
-let step = -1;
+let questionIndex = -1;
 
-let macroScores = {};
+let preferences = {};
 
-let archetypeScores = {};
+let granularScores = {};
 
 
 /* =========================================================
-   HELPERS
+   QUIZ LOGIC
 ========================================================= */
 
-function escapeHtml(str) {
+function resetScores() {
 
-  const div = document.createElement("div");
-
-  div.textContent = str;
-
-  return div.innerHTML;
+    preferences = {};
+    granularScores = {};
 
 }
 
 
-function addScores(option) {
+function addScores(scores) {
 
-  Object.entries(option.macro || {}).forEach(([key, value]) => {
+    Object.entries(scores).forEach(
+        ([key, value]) => {
 
-    macroScores[key] =
-      (macroScores[key] || 0) + value;
+            preferences[key] =
+                (preferences[key] || 0) + value;
 
-  });
+        }
+    );
+
+}
 
 
-  Object.entries(option.archetypes || {}).forEach(([key, value]) => {
+function chooseOption(option) {
 
-    archetypeScores[key] =
-      (archetypeScores[key] || 0) + value;
+    addScores(option.scores);
 
-  });
+    questionIndex++;
+
+    render();
 
 }
 
 
 /* =========================================================
-   NORMALIZE MACRO SCORES
+   NORMALIZE PREFERENCES
 ========================================================= */
 
-function normalizedMacros() {
+function getPreferencePercentages() {
 
-  const values =
-    Object.values(macroScores);
+    const values =
+        Object.entries(preferences);
 
-  const max =
-    Math.max(...values, 1);
+    const max =
+        Math.max(
+            ...values.map(
+                ([, value]) => value
+            ),
+            1
+        );
 
-  return MACROS.map(macro => {
-
-    const raw =
-      macroScores[macro] || 0;
-
-    return {
-
-      macro,
-
-      raw,
-
-      percentage:
-        Math.round(
-          Math.max(0, raw / max) * 100
+    return Object.entries(preferences)
+        .map(
+            ([name, value]) => ({
+                name,
+                value,
+                percentage:
+                    Math.round(
+                        (value / max) * 100
+                    )
+            })
         )
-
-    };
-
-  });
-
-}
-
-
-/* =========================================================
-   ARCHETYPE RESULT
-========================================================= */
-
-function getTopArchetypes() {
-
-  return Object.entries(archetypeScores)
-
-    .sort((a, b) => b[1] - a[1])
-
-    .map(([key, score]) => {
-
-      const [macro, sub] =
-        key.split("|");
-
-      return {
-
-        key,
-
-        macro,
-
-        sub,
-
-        score,
-
-        data:
-          ARCHETYPES.find(
-            a =>
-              a.macro === macro &&
-              a.sub === sub
-          )
-
-      };
-
-    });
+        .sort(
+            (a, b) =>
+                b.value - a.value
+        );
 
 }
 
 
 /* =========================================================
    FACTION MATCHING
-
-   Uses the player's macro profile.
-
-   Distance is based on how similar the faction's
-   playstyle coordinates are to the player's preferences.
 ========================================================= */
 
-function factionMatches() {
+/*
+    This is the important part.
 
-  const profile = {};
+    We compare the player's preference profile against
+    every faction.
 
-  const positiveScores =
-    MACROS.map(
-      m => macroScores[m] || 0
-    );
+    There is no "winner because it has the highest raw
+    number".
 
-  const max =
-    Math.max(...positiveScores, 1);
+    Instead we calculate similarity across ALL preferences.
 
-  MACROS.forEach(macro => {
+    That means:
 
-    profile[macro] =
-      Math.max(
-        0,
-        (macroScores[macro] || 0) / max * 10
-      );
+        Mobility + Attrition
 
-  });
+    can produce a very different winner than:
 
+        Mobility alone.
+*/
 
-  const results =
-    FACTIONS.map(faction => {
+function calculateFactionMatches() {
 
-      let distance = 0;
+    const prefs =
+        getPreferencePercentages();
 
-      MACROS.forEach(macro => {
-
-        const player =
-          profile[macro];
-
-        const factionValue =
-          faction.profile[macro];
-
-        distance +=
-          Math.pow(
-            player - factionValue,
-            2
-          );
-
-      });
-
-
-      const maxDistance =
-        Math.sqrt(
-          MACROS.length * 100
-        );
-
-      const normalizedDistance =
-        Math.sqrt(distance) /
-        maxDistance;
-
-      let match =
-        (1 - normalizedDistance) * 100;
-
-      match =
+    const maxPreference =
         Math.max(
-          0,
-          Math.min(
-            100,
-            Math.round(match)
-          )
+            ...prefs.map(
+                p => p.value
+            ),
+            1
         );
 
+    return Object.entries(FACTIONS)
+        .map(
+            ([name, faction]) => {
 
-      return {
+                let total = 0;
 
-        ...faction,
+                let possible = 0;
 
-        match
+                const matchingTraits = [];
 
-      };
+                prefs.forEach(pref => {
 
-    });
+                    const importance =
+                        pref.value /
+                        maxPreference;
 
+                    const factionValue =
+                        faction.scores[
+                            pref.name
+                        ] || 0;
 
-  return results.sort(
-    (a, b) =>
-      b.match - a.match
-  );
+                    total +=
+                        factionValue *
+                        importance;
+
+                    possible +=
+                        10 *
+                        importance;
+
+                    if (
+                        factionValue >= 7 &&
+                        pref.value >=
+                            maxPreference * 0.65
+                    ) {
+
+                        matchingTraits.push(
+                            pref.name
+                        );
+
+                    }
+
+                });
+
+                const percentage =
+                    Math.round(
+                        (total / possible) * 100
+                    );
+
+                return {
+
+                    name,
+
+                    percentage,
+
+                    matchingTraits,
+
+                    description:
+                        faction.description,
+
+                    styles:
+                        faction.styles
+
+                };
+
+            }
+        )
+        .sort(
+            (a, b) =>
+                b.percentage -
+                a.percentage
+        );
 
 }
 
@@ -1897,213 +1689,157 @@ function factionMatches() {
 
 function radarSVG() {
 
-  const data =
-    normalizedMacros();
+    const prefs =
+        Object.fromEntries(
+            getPreferencePercentages()
+                .map(
+                    p => [
+                        p.name,
+                        p.percentage
+                    ]
+                )
+        );
 
-  const size = 330;
+    const categories =
+        Object.keys(MACROS);
 
-  const cx = 165;
+    const size = 320;
 
-  const cy = 165;
+    const center = 160;
 
-  const outerR = 105;
+    const radius = 105;
 
-  const n = data.length;
-
-
-  const angleFor =
-    i =>
-      (Math.PI * 2 * i) / n
-      - Math.PI / 2;
-
-
-  let rings = "";
-
-  [0.25, 0.5, 0.75, 1]
-    .forEach(f => {
-
-      const pts =
-        data.map((_, i) => {
-
-          const a =
-            angleFor(i);
-
-          const r =
-            outerR * f;
-
-          return `${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`;
-
-        }).join(" ");
+    const angle =
+        i =>
+            (
+                Math.PI * 2 * i /
+                categories.length
+            ) -
+            Math.PI / 2;
 
 
-      rings += `
-        <polygon
-          points="${pts}"
-          fill="none"
-          stroke="#3a3234"
-          stroke-width="1"
-        />
-      `;
+    const points =
+        categories
+            .map(
+                (category, i) => {
 
-    });
+                    const a =
+                        angle(i);
+
+                    const value =
+                        prefs[category] || 0;
+
+                    const r =
+                        radius *
+                        (value / 100);
+
+                    return `
+                        ${center + r * Math.cos(a)},
+                        ${center + r * Math.sin(a)}
+                    `;
+
+                }
+            )
+            .join(" ");
 
 
-  let spokes = "";
+    const grid =
+        [25, 50, 75, 100]
+            .map(level => {
 
-  data.forEach((_, i) => {
+                const pts =
+                    categories
+                        .map(
+                            (_, i) => {
 
-    const a =
-      angleFor(i);
+                                const a =
+                                    angle(i);
 
-    const x =
-      cx + outerR * Math.cos(a);
+                                const r =
+                                    radius *
+                                    (level / 100);
 
-    const y =
-      cy + outerR * Math.sin(a);
+                                return `
+                                    ${center + r * Math.cos(a)},
+                                    ${center + r * Math.sin(a)}
+                                `;
+
+                            }
+                        )
+                        .join(" ");
+
+                return `
+                    <polygon
+                        points="${pts}"
+                        fill="none"
+                        stroke="#3a3234"
+                    />
+                `;
+
+            })
+            .join("");
 
 
-    spokes += `
-      <line
-        x1="${cx}"
-        y1="${cy}"
-        x2="${x}"
-        y2="${y}"
-        stroke="#3a3234"
-        stroke-width="1"
-      />
+    const labels =
+        categories
+            .map(
+                (category, i) => {
+
+                    const a =
+                        angle(i);
+
+                    const r =
+                        radius + 23;
+
+                    const x =
+                        center +
+                        r *
+                        Math.cos(a);
+
+                    const y =
+                        center +
+                        r *
+                        Math.sin(a);
+
+                    return `
+                        <text
+                            x="${x}"
+                            y="${y}"
+                            fill="#b9924a"
+                            font-size="10"
+                            text-anchor="middle"
+                            dominant-baseline="middle"
+                        >
+                            ${category}
+                        </text>
+                    `;
+
+                }
+            )
+            .join("");
+
+
+    return `
+        <svg
+            viewBox="0 0 ${size} ${size}"
+            width="320"
+            height="320"
+        >
+
+            ${grid}
+
+            <polygon
+                points="${points}"
+                fill="#7c2029"
+                fill-opacity="0.55"
+                stroke="#b9924a"
+                stroke-width="2"
+            />
+
+            ${labels}
+
+        </svg>
     `;
-
-  });
-
-
-  const dataPts =
-    data.map((item, i) => {
-
-      const a =
-        angleFor(i);
-
-      const r =
-        outerR *
-        (item.percentage / 100);
-
-      return `
-        ${cx + r * Math.cos(a)},
-        ${cy + r * Math.sin(a)}
-      `;
-
-    }).join(" ");
-
-
-  const polygon = `
-    <polygon
-      points="${dataPts}"
-      fill="#7c2029"
-      fill-opacity="0.55"
-      stroke="#b9924a"
-      stroke-width="2"
-    />
-  `;
-
-
-  let labels = "";
-
-  data.forEach((item, i) => {
-
-    const a =
-      angleFor(i);
-
-    const r =
-      outerR + 24;
-
-    const x =
-      cx + r * Math.cos(a);
-
-    const y =
-      cy + r * Math.sin(a);
-
-
-    let anchor = "middle";
-
-    if (Math.cos(a) > 0.3)
-      anchor = "start";
-
-    if (Math.cos(a) < -0.3)
-      anchor = "end";
-
-
-    labels += `
-      <text
-        x="${x}"
-        y="${y}"
-        fill="#b9924a"
-        font-size="10"
-        font-family="Oswald, sans-serif"
-        text-anchor="${anchor}"
-        dominant-baseline="middle"
-      >
-        ${item.macro}
-      </text>
-    `;
-
-  });
-
-
-  return `
-    <svg
-      viewBox="0 0 ${size} ${size}"
-      width="100%"
-      height="330"
-      style="max-width:360px;"
-    >
-      ${rings}
-      ${spokes}
-      ${polygon}
-      ${labels}
-    </svg>
-  `;
-
-}
-
-
-/* =========================================================
-   RESULT EXPLANATION
-========================================================= */
-
-function explainMatch(faction, playerProfile) {
-
-  const strongest =
-    [...MACROS]
-      .sort(
-        (a, b) =>
-          playerProfile[b] -
-          playerProfile[a]
-      )
-      .slice(0, 3);
-
-
-  const names =
-    strongest
-      .filter(
-        macro =>
-          faction.profile[macro] >= 7
-      )
-      .slice(0, 2);
-
-
-  if (!names.length) {
-
-    return faction.description;
-
-  }
-
-
-  return `
-    ${faction.description}
-    Your strongest preferences include
-    <strong>${names.join(" and ")}</strong>,
-    which are also significant parts of this
-    faction's playstyle.
-  `;
 
 }
 
@@ -2114,43 +1850,43 @@ function explainMatch(faction, playerProfile) {
 
 function renderIntro() {
 
-  return `
+    return `
 
-    <div class="intro">
+        <div class="intro">
 
-      <div
-        class="eyebrow"
-        style="margin-bottom:14px;"
-      >
-        Doctrine Assessment · ${QUESTIONS.length} Questions
-      </div>
+            <div class="eyebrow">
+                Auspex Doctrine Assessment
+            </div>
 
-      <h1 class="display">
-        WHAT'S YOUR<br>
-        40K PLAYSTYLE?
-      </h1>
+            <h1 class="display">
+                WHAT'S YOUR<br>
+                40K PLAYSTYLE?
+            </h1>
 
-      <p>
-        Forget the faction you think you should play.
-        Answer based on what you actually find
-        satisfying at the table.
-      </p>
+            <p>
+                Forget which faction looks coolest for a moment.
+                Tell us how you actually want to play the game,
+                and we'll find the armies whose battlefield
+                identity overlaps with you.
+            </p>
 
-      <button
-        class="btn-primary"
-        id="start-btn"
-      >
-        Begin Assessment
-      </button>
+            <p style="font-size:15px;">
+                Your result isn't just one faction.
+                You'll get your strongest playstyle preferences,
+                the combinations behind them, and several armies
+                you may enjoy for different reasons.
+            </p>
 
-      <div class="small-note">
-        Your answers build a playstyle profile,
-        not a faction personality.
-      </div>
+            <button
+                class="btn-primary"
+                id="start"
+            >
+                Begin Assessment
+            </button>
 
-    </div>
+        </div>
 
-  `;
+    `;
 
 }
 
@@ -2159,128 +1895,83 @@ function renderIntro() {
    QUESTION SCREEN
 ========================================================= */
 
-function renderQuestion(index) {
+function renderQuestion() {
 
-  const q =
-    QUESTIONS[index];
+    const question =
+        QUESTIONS[questionIndex];
 
-  const total =
-    QUESTIONS.length;
+    const total =
+        QUESTIONS.length;
 
-  const pct =
-    (index / total) * 100;
-
-
-  const options =
-    q.options
-      .map(
-        (option, i) => `
-
-          <button
-            class="opt-btn"
-            data-opt="${i}"
-          >
-            ${escapeHtml(option.label)}
-          </button>
-
-        `
-      )
-      .join("");
+    const percentage =
+        (questionIndex / total) * 100;
 
 
-  return `
+    return `
 
-    <div class="q-header">
+        <div>
 
-      <span class="eyebrow">
-        Turn
-        ${String(index + 1).padStart(2, "0")}
-        /
-        ${String(total).padStart(2, "0")}
-      </span>
+            <div class="question-header">
 
-      <span class="eyebrow blood">
-        Auspex Reading
-      </span>
+                <span class="eyebrow">
+                    Assessment
+                    ${String(
+                        questionIndex + 1
+                    ).padStart(2, "0")}
+                    /
+                    ${String(
+                        total
+                    ).padStart(2, "0")}
+                </span>
 
-    </div>
+                <span class="eyebrow">
+                    Auspex Reading
+                </span>
 
-
-    <div class="progress-track">
-
-      <div
-        class="progress-fill"
-        style="width:${pct}%"
-      ></div>
-
-    </div>
+            </div>
 
 
-    <h2 class="display q-title">
-      ${escapeHtml(q.text)}
-    </h2>
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    style="
+                        width:${percentage}%;
+                    "
+                ></div>
+
+            </div>
 
 
-    <div id="options">
-      ${options}
-    </div>
+            <h2 class="display question-title">
 
-  `;
+                ${question.text}
 
-}
+            </h2>
 
 
-/* =========================================================
-   PROFILE DISPLAY
-========================================================= */
+            <div>
 
-function renderProfile() {
+                ${question.options
+                    .map(
+                        (option, index) => `
 
-  const data =
-    normalizedMacros();
+                            <button
+                                class="option"
+                                data-index="${index}"
+                            >
+                                ${option.text}
+                            </button>
 
+                        `
+                    )
+                    .join("")}
 
-  const rows =
-    data
-      .sort(
-        (a, b) =>
-          b.percentage -
-          a.percentage
-      )
-      .map(item => `
-
-        <div class="profile-row">
-
-          <div class="profile-name">
-            ${item.macro}
-          </div>
-
-          <div class="profile-bar">
-
-            <div
-              class="profile-fill"
-              style="width:${item.percentage}%"
-            ></div>
-
-          </div>
-
-          <div class="profile-value">
-            ${item.percentage}%
-          </div>
+            </div>
 
         </div>
 
-      `)
-      .join("");
-
-
-  return `
-
-    <div class="profile-grid">
-      ${rows}
-    </div>
-
-  `;
+    `;
 
 }
 
@@ -2291,230 +1982,455 @@ function renderProfile() {
 
 function renderResults() {
 
-  const archetypes =
-    getTopArchetypes();
-  const topArchetype =
-    archetypes[0];
-  const matches =
-    factionMatches();
-  const topFaction =
-    matches[0];
-  const macroProfile =
-    {};
-  normalizedMacros()
-    .forEach(item => {
+    const preferences =
+        getPreferencePercentages();
 
-      macroProfile[item.macro] =
-        item.percentage / 10;
-    });
-  const factionCards =
-    matches
-      .slice(0, 6)
-      .map(
-        (faction, index) => `
-          <div
-            class="
-              faction-card
-              ${index === 0 ? "top-match" : ""}
-            "
-          >
-            <div class="faction-header">
-              <div class="faction-name">
-                ${escapeHtml(faction.name)}
-              </div>
-              <div class="match-score">
-                ${faction.match}% MATCH
-              </div>
-            </div>
-            <div class="match-bar">
-              <div
-                class="match-fill"
-                style="width:${faction.match}%"
-              ></div>
-            </div>
-            <div class="faction-reason">
-              ${explainMatch(
-                faction,
-                macroProfile
-              )}
-            </div>
-            <div class="trait-chips">
-              ${faction.strengths
-                .map(
-                  trait =>
-                    `<span class="chip">
-                      ${escapeHtml(trait)}
-                    </span>`
-                )
-                .join("")}
-            </div>
-          </div>
-        `
-      )
-      .join("");
-  const second =
-    archetypes[1];
-  return `
-    <div class="result-header">
-      <div class="eyebrow">
-        Auspex Scan Complete
-      </div>
-      <h1 class="display">
-        YOUR PLAYSTYLE
-      </h1>
-      <p>
-        Your answers don't point toward a single
-        faction. They describe a combination of
-        preferences that several armies can satisfy
-        in different ways.
-      </p>
-    </div>
-    <div class="radar-wrap">
-      ${radarSVG()}
-    </div>
-    ${renderProfile()}
-    <div class="rule"></div>
-    <div class="archetype-box">
-      <div class="eyebrow">
-        Dominant Archetype
-      </div>
-      <div class="display archetype-name">
-        ${escapeHtml(topArchetype.sub)}
-      </div>
-      <div class="eyebrow">
-        ${escapeHtml(topArchetype.macro)}
-      </div>
-      <p class="archetype-quote">
-        "${escapeHtml(
-          topArchetype.data.fantasy
-        )}"
-      </p>
-    </div>
-    ${
-      second
-        ? `
-          <div class="alternative-box">
-            <div class="eyebrow">
-              Secondary Leaning
-            </div>
-            <h3>
-              ${escapeHtml(second.sub)}
-            </h3>
-            <p>
-              "${escapeHtml(
-                second.data.fantasy
-              )}"
-            </p>
-          </div>
+    const factions =
+        calculateFactionMatches();
 
-        `
-        : ""
-    }
-    <div class="rule"></div>
-    <div
-      class="section-title"
-      style="margin-top:30px;"
-    >
-      <div class="eyebrow">
-        Army Compatibility
-      </div>
-      <h2 class="display">
-        YOUR STRONGEST MATCHES
-      </h2>
-    </div>
-    ${factionCards}
-    <div
-      style="
-        text-align:center;
-        margin-top:30px;
-      "
-    >
-      <button
-        class="btn-ghost"
-        id="restart-btn"
-      >
-        Run Assessment Again
-      </button>
-    </div>
-  `;
+    const top =
+        factions[0];
+
+    const second =
+        factions[1];
+
+    const third =
+        factions[2];
+
+
+    const topPreferences =
+        preferences
+            .slice(0, 3);
+
+
+    return `
+
+        <div class="results">
+
+            <div class="result-header">
+
+                <div class="eyebrow">
+                    Auspex Scan Complete
+                </div>
+
+                <h1 class="display result-title">
+                    YOUR PLAYSTYLE PROFILE
+                </h1>
+
+                <p class="result-description">
+
+                    You aren't one archetype.
+                    Your results show a combination of
+                    preferences that can point toward
+                    several very different armies.
+
+                </p>
+
+            </div>
+
+
+            <div class="radar">
+                ${radarSVG()}
+            </div>
+
+
+            <div class="preference-section">
+
+                <div
+                    class="eyebrow"
+                    style="
+                        text-align:center;
+                        margin-bottom:20px;
+                    "
+                >
+                    Strongest Preferences
+                </div>
+
+
+                ${preferences
+                    .map(
+                        pref => `
+
+                            <div class="preference-row">
+
+                                <div class="preference-header">
+
+                                    <span
+                                        class="preference-name"
+                                    >
+                                        ${pref.name}
+                                    </span>
+
+                                    <span
+                                        class="preference-percent"
+                                    >
+                                        ${pref.percentage}%
+                                    </span>
+
+                                </div>
+
+
+                                <div class="preference-track">
+
+                                    <div
+                                        class="preference-fill"
+                                        style="
+                                            width:${pref.percentage}%;
+                                        "
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+                        `
+                    )
+                    .join("")}
+
+            </div>
+
+
+            <div class="rule"></div>
+
+
+            <div class="why-box">
+
+                <h3>
+                    What this actually means
+                </h3>
+
+                <p>
+
+                    Your strongest preferences are
+                    <strong>
+                        ${topPreferences
+                            .map(
+                                p => p.name
+                            )
+                            .join(" + ")}
+                    </strong>.
+
+                    Rather than asking which faction is
+                    "best", we're looking for armies whose
+                    normal gameplay creates a similar
+                    experience.
+
+                </p>
+
+            </div>
+
+
+            <div
+                class="eyebrow"
+                style="
+                    text-align:center;
+                    margin:30px 0 15px;
+                "
+            >
+                Recommended Armies
+            </div>
+
+
+            ${renderFaction(
+                top,
+                "Primary Recommendation"
+            )}
+
+            ${renderFaction(
+                second,
+                "Alternative"
+            )}
+
+            ${renderFaction(
+                third,
+                "Alternative"
+            )}
+
+
+            <div
+                class="why-box"
+                style="
+                    border-left-color:#b9924a;
+                "
+            >
+
+                <h3>
+                    Why ${top.name}?
+                </h3>
+
+                <p>
+
+                    ${generateWhy(
+                        top,
+                        topPreferences
+                    )}
+
+                </p>
+
+            </div>
+
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:30px;
+                "
+            >
+
+                <button
+                    class="btn-ghost"
+                    id="restart"
+                >
+                    Run Assessment Again
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
 }
+
+
+/* =========================================================
+   FACTION CARD
+========================================================= */
+
+function renderFaction(
+    faction,
+    label
+) {
+
+    return `
+
+        <div
+            class="
+                recommendation
+                ${
+                    label ===
+                    "Primary Recommendation"
+                        ? "primary"
+                        : ""
+                }
+            "
+        >
+
+            <div class="recommendation-rank">
+                ${label}
+            </div>
+
+            <div class="recommendation-name">
+
+                ${faction.name}
+
+            </div>
+
+            <div class="recommendation-score">
+
+                PLAYSTYLE MATCH:
+                ${faction.percentage}%
+
+            </div>
+
+            <div class="recommendation-description">
+
+                ${faction.description}
+
+            </div>
+
+
+            <div class="match-list">
+
+                ${faction.matchingTraits
+                    .map(
+                        trait => `
+
+                            <span class="match-tag">
+                                ${trait}
+                            </span>
+
+                        `
+                    )
+                    .join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   EXPLANATION ENGINE
+========================================================= */
+
+function generateWhy(
+    faction,
+    preferences
+) {
+
+    const strongest =
+        preferences
+            .slice(0, 2)
+            .map(
+                p => p.name
+            );
+
+
+    const reasons = [];
+
+
+    strongest.forEach(
+        preference => {
+
+            const value =
+                FACTIONS[
+                    faction.name
+                ].scores[
+                    preference
+                ] || 0;
+
+
+            if (value >= 8) {
+
+                reasons.push(
+                    `you strongly value ${preference.toLowerCase()}`
+                );
+
+            }
+
+        }
+    );
+
+
+    if (!reasons.length) {
+
+        return `
+            ${faction.name} provides a broad overlap
+            with your answers without relying entirely
+            on one particular preference.
+        `;
+
+    }
+
+
+    return `
+        ${faction.name} stands out because
+        ${reasons.join(" and ")}.
+        The important part is that it doesn't merely
+        match one answer — its overall battlefield
+        identity overlaps with several of your strongest
+        preferences.
+    `;
+
+}
+
+
 /* =========================================================
    RENDER
 ========================================================= */
 
 function render() {
-  
-  const app =
-    document.getElementById("app");
-  const total =
-    QUESTIONS.length;
-  if (step === -1) {
-    
-    app.innerHTML =
-      renderIntro();
-    document
-      .getElementById("start-btn")
-      .addEventListener(
-        "click",
-        () => {
-          step = 0;
-          render();
-        }
-      );
-    return;
-  }
-  if (
-    step >= 0 &&
-    step < total
-  ) {
+
+    const app =
+        document.getElementById("app");
+
+
+    if (questionIndex === -1) {
+
+        app.innerHTML =
+            renderIntro();
+
+
+        document
+            .getElementById("start")
+            .addEventListener(
+                "click",
+                () => {
+
+                    resetScores();
+
+                    questionIndex = 0;
+
+                    render();
+
+                }
+            );
+
+        return;
+
+    }
+
+
+    if (
+        questionIndex >= 0 &&
+        questionIndex <
+        QUESTIONS.length
+    ) {
+
+        app.innerHTML =
+            renderQuestion();
+
+
+        document
+            .querySelectorAll(".option")
+            .forEach(
+                button => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            const index =
+                                Number(
+                                    button.dataset.index
+                                );
+
+                            chooseOption(
+                                QUESTIONS[
+                                    questionIndex
+                                ].options[index]
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        return;
+
+    }
+
 
     app.innerHTML =
-      renderQuestion(step);
-    document
-      .querySelectorAll(
-        "#options .opt-btn"
-      )
-      .forEach(button => {
+        renderResults();
 
-        button.addEventListener(
-          "click",
-          () => {
-            const index =
-              Number(
-                button.dataset.opt
-              );
-            const option =
-              QUESTIONS[step]
-                .options[index];
-            addScores(option);
-            step++;
-            render();
-          }
+
+    document
+        .getElementById("restart")
+        .addEventListener(
+            "click",
+            () => {
+
+                questionIndex = -1;
+
+                resetScores();
+
+                render();
+
+            }
         );
-      });
-    return;
-  }
-  app.innerHTML =
-    renderResults();
-  const restart =
-    document.getElementById(
-      "restart-btn"
-    );
-  if (restart) {
-    
-    restart.addEventListener(
-      "click",
-      () => {
-        step = -1;
-        macroScores = {};
-        archetypeScores = {};
-        render();
-        
-      }
-    );
-  }
+
 }
+
+
 render();
+
 </script>
+
 </body>
 </html>
