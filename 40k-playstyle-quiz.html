@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What's Your 40K Playstyle?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,500&family=Oswald:wght@500;600&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; min-height: 100%;
+    background: radial-gradient(ellipse at 50% -10%, #201a1c 0%, #100d10 55%, #0b090b 100%);
+    color: #e9e1cd;
+    font-family: 'Crimson Pro', serif;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  #app { width: 100%; max-width: 640px; }
+
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #9c8f6f;
+  }
+  .display {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.02em;
+  }
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b9924a66, transparent);
+  }
+
+  /* Intro */
+  .intro { text-align: center; padding: 36px 8px; }
+  .intro h1 {
+    font-size: 34px; font-weight: 800; color: #e9e1cd;
+    margin: 14px 0 18px; line-height: 1.15;
+  }
+  .intro p {
+    color: #a89c86; font-size: 17px; max-width: 460px;
+    margin: 0 auto 30px; line-height: 1.6;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    font-family: 'Oswald', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; font-size: 13px;
+    background: #7c2029; color: #f2e6d8; border: 1px solid #a03039; padding: 14px 28px;
+    cursor: pointer; transition: all 0.15s ease; border-radius: 2px;
+  }
+  .btn-primary:hover { background: #93262f; }
+  .btn-ghost {
+    font-family: 'Oswald', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px;
+    background: transparent; color: #b9924a; border: 1px solid #b9924a55; padding: 12px 22px;
+    cursor: pointer; border-radius: 2px; transition: all .15s ease;
+  }
+  .btn-ghost:hover { background: #b9924a1a; }
+
+  /* Question screen */
+  .q-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .q-header .blood { color: #7c2029; }
+  .progress-track { height: 2px; background: #2a2426; margin-bottom: 28px; position: relative; }
+  .progress-fill { position: absolute; left: 0; top: 0; height: 100%; background: #b9924a; transition: width .3s ease; }
+  .q-title {
+    font-size: 24px; font-weight: 700; color: #e9e1cd;
+    margin-bottom: 24px; line-height: 1.35;
+  }
+  .opt-btn {
+    text-align: left; width: 100%; padding: 16px 18px; margin-bottom: 10px;
+    background: #19161a; border: 1px solid #322b2c; color: #e9e1cd;
+    font-family: 'Crimson Pro', serif; font-size: 16px; line-height: 1.4;
+    border-radius: 2px; cursor: pointer; transition: all 0.15s ease; display: block;
+  }
+  .opt-btn:hover { border-color: #b9924a; background: #221c1d; transform: translateX(2px); }
+  .opt-btn:focus-visible { outline: 2px solid #b9924a; outline-offset: 2px; }
+
+  /* Results */
+  .macro-label {
+    text-align: center; font-size: 13px; letter-spacing: 0.2em; color: #7c2029;
+    margin-bottom: 22px; text-transform: uppercase;
+  }
+  .radar-wrap { width: 100%; margin-bottom: 8px; display: flex; justify-content: center; }
+  .archetype-name {
+    font-size: 30px; font-weight: 800; color: #e9e1cd; margin-bottom: 14px; line-height: 1.2;
+  }
+  .archetype-quote {
+    font-style: italic; color: #c9bda0; font-size: 18px; max-width: 480px;
+    margin: 0 auto; line-height: 1.6;
+  }
+  .chip {
+    font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 6px 12px; border: 1px solid #b9924a55; color: #d8c79a; border-radius: 2px; background: #1c1717;
+    display: inline-block;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .secondary-box {
+    background: #19161a; border: 1px solid #2a2426; padding: 18px 22px;
+    margin-bottom: 30px; border-radius: 2px;
+  }
+  .secondary-box .sub-name { font-size: 17px; font-weight: 700; color: #e9e1cd; margin-bottom: 6px; }
+  .secondary-box .sub-quote { color: #a89c86; font-size: 14.5px; margin-bottom: 10px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Data: full archetype taxonomy, keyed by "Macro|Sub"
+// ---------------------------------------------------------------------------
+const ARCHETYPES = [
+  { macro: "Firepower", sub: "Static Gunline", fantasy: "I establish firing positions and make crossing the table painful.", factions: ["Astra Militarum", "T'au Empire", "Dark Angels", "Leagues of Votann"] },
+  { macro: "Firepower", sub: "Mobile Firepower", fantasy: "I shoot you while constantly changing where the threat is.", factions: ["T'au Empire", "Aeldari", "Dark Angels (Ravenwing)", "Leagues of Votann"] },
+  { macro: "Firepower", sub: "Artillery / Indirect Fire", fantasy: "I don't necessarily need to see you to kill you.", factions: ["Astra Militarum"] },
+  { macro: "Firepower", sub: "Firepower + Board Control", fantasy: "Shooting isn't the objective — shooting lets me control the battlefield.", factions: ["Necrons", "Adeptus Mechanicus", "T'au Empire", "Leagues of Votann"] },
+  { macro: "Mass", sub: "True Swarm", fantasy: "I want overwhelming numbers — the body count is itself the strategy.", factions: ["Tyranids", "Orks"] },
+  { macro: "Mass", sub: "Massed Infantry", fantasy: "I want lots of soldiers supporting a larger military machine — I command an army, not a swarm.", factions: ["Astra Militarum"] },
+  { macro: "Mass", sub: "Mass Assault", fantasy: "There are so many threats coming at you that you can't stop them all.", factions: ["Orks", "Chaos Daemons", "Tyranids"] },
+  { macro: "Mass", sub: "Disposable / Sacrificial", fantasy: "Losing units is acceptable if they accomplished their job.", factions: ["Astra Militarum", "Genestealer Cults", "Chaos Daemons", "Tyranids"] },
+  { macro: "Pressure", sub: "Shock Assault", fantasy: "I hit you incredibly hard, immediately, with nothing held back.", factions: ["World Eaters", "Black Templars"] },
+  { macro: "Pressure", sub: "Surgical Assault", fantasy: "I identify the important target and surgically destroy it.", factions: ["Blood Angels", "Grey Knights", "Aeldari"] },
+  { macro: "Pressure", sub: "Mass Assault", fantasy: "There are too many threats to stop.", factions: ["Orks", "Tyranids", "Chaos Daemons"] },
+  { macro: "Pressure", sub: "Mobile Threat", fantasy: "You cannot safely ignore where my army is.", factions: ["Drukhari", "Aeldari", "Space Wolves"] },
+  { macro: "Pressure", sub: "Psychological Pressure", fantasy: "My positioning forces you to react to me before I've even acted.", factions: ["Genestealer Cults", "Aeldari", "Drukhari", "Grey Knights"] },
+  { macro: "Elite", sub: "Pure Elite", fantasy: "Every single model is valuable.", factions: ["Adeptus Custodes", "Grey Knights"] },
+  { macro: "Elite", sub: "Deathball", fantasy: "I concentrate overwhelming power into a small number of units.", factions: ["Adeptus Custodes", "Imperial Knights", "Chaos Knights"] },
+  { macro: "Elite", sub: "Elite Assault", fantasy: "Small numbers, enormous melee threat.", factions: ["Blood Angels", "Black Templars", "Space Wolves"] },
+  { macro: "Elite", sub: "Elite Specialists", fantasy: "Every unit has a specific job.", factions: ["Deathwatch", "Grey Knights", "Thousand Sons"] },
+  { macro: "Elite", sub: "Super-Heavy Elite", fantasy: "I want individual models to feel like bosses.", factions: ["Imperial Knights", "Chaos Knights"] },
+  { macro: "Mobility", sub: "Hit-and-Run", fantasy: "Attack, disengage, reposition.", factions: ["Drukhari", "Aeldari"] },
+  { macro: "Mobility", sub: "Board Control", fantasy: "Movement exists primarily to control objectives and space.", factions: ["Aeldari", "Necrons", "T'au Empire"] },
+  { macro: "Mobility", sub: "Fast Assault", fantasy: "Movement exists to get into combat.", factions: ["Blood Angels", "Space Wolves", "Drukhari"] },
+  { macro: "Mobility", sub: "Evasion", fantasy: "Don't fight fair — be somewhere else when the bad fight arrives.", factions: ["Aeldari", "Drukhari", "Genestealer Cults"] },
+  { macro: "Mobility", sub: "Maneuver Warfare", fantasy: "Positioning the whole army correctly is how I win.", factions: ["Aeldari", "T'au Empire", "Astra Militarum", "Leagues of Votann"] },
+  { macro: "Attrition", sub: "Regeneration", fantasy: "You killed it. It came back.", factions: ["Necrons"] },
+  { macro: "Attrition", sub: "Durability", fantasy: "Good luck killing this.", factions: ["Death Guard", "Adeptus Custodes"] },
+  { macro: "Attrition", sub: "Disposable Attrition", fantasy: "I don't care that you killed that unit.", factions: ["Astra Militarum", "Tyranids", "Orks", "Chaos Daemons"] },
+  { macro: "Attrition", sub: "Grind", fantasy: "Every turn I make the position worse for you.", factions: ["Death Guard", "Necrons"] },
+  { macro: "Attrition", sub: "Trading", fantasy: "I'll happily trade this unit for yours because the exchange benefits me.", factions: ["Adepta Sororitas", "Drukhari", "Aeldari", "Blood Angels"] },
+  { macro: "Synergy", sub: "Combo Engine", fantasy: "I build an interaction that produces an enormous payoff.", factions: ["Thousand Sons", "Emperor's Children"] },
+  { macro: "Synergy", sub: "Buff Network", fantasy: "Units make other units better.", factions: ["Adeptus Mechanicus", "T'au Empire", "Aeldari"] },
+  { macro: "Synergy", sub: "Resource Engine", fantasy: "Managing a special resource is central to my strategy.", factions: ["Adepta Sororitas", "Thousand Sons", "Necrons"] },
+  { macro: "Synergy", sub: "Detachment / Construction Engine", fantasy: "The fun is constructing the machine.", factions: ["Chaos Space Marines", "Adeptus Mechanicus", "Aeldari"] },
+  { macro: "Synergy", sub: "Tactical Synergy", fantasy: "My units are individually good, but together they're much better.", factions: ["Space Marines", "Deathwatch", "Adeptus Custodes", "T'au Empire"] },
+  { macro: "Ambush", sub: "Deep Strike", fantasy: "I want units to arrive exactly where needed.", factions: ["Grey Knights", "Chaos Daemons"] },
+  { macro: "Ambush", sub: "Ambush", fantasy: "I want my opponent to discover the threat too late.", factions: ["Genestealer Cults"] },
+  { macro: "Ambush", sub: "Infiltration", fantasy: "I want to start the game already somewhere unexpected.", factions: ["Aeldari", "Genestealer Cults"] },
+  { macro: "Ambush", sub: "Reinforcement", fantasy: "My army keeps appearing throughout the battle.", factions: ["Chaos Daemons", "Genestealer Cults"] },
+  { macro: "Ambush", sub: "Threat Projection", fantasy: "Even when I'm not there, you have to account for me.", factions: ["Grey Knights", "Aeldari", "Genestealer Cults"] },
+  { macro: "Toolbox", sub: "Generalist", fantasy: "Give me a solution for everything.", factions: ["Space Marines"] },
+  { macro: "Toolbox", sub: "Specialist Toolbox", fantasy: "I have very specialized units for very specific problems.", factions: ["Deathwatch"] },
+  { macro: "Toolbox", sub: "Utility", fantasy: "I don't necessarily kill things — I manipulate the battlefield.", factions: ["Imperial Agents"] },
+  { macro: "Toolbox", sub: "Combined Arms", fantasy: "Infantry, vehicles, shooting, melee — give me the whole military.", factions: ["Astra Militarum", "Space Marines", "Leagues of Votann"] },
+  { macro: "Toolbox", sub: "Adaptive", fantasy: "I want to change my plan depending on my opponent.", factions: ["Chaos Space Marines", "Aeldari", "Space Marines"] },
+];
+
+const MACRO_ORDER = ["Firepower", "Mass", "Pressure", "Elite", "Mobility", "Attrition", "Synergy", "Ambush", "Toolbox"];
+
+function find(macro, sub) {
+  return ARCHETYPES.find(a => a.macro === macro && a.sub === sub);
+}
+
+// ---------------------------------------------------------------------------
+// Questions
+// ---------------------------------------------------------------------------
+const QUESTIONS = [
+  {
+    text: "The turn begins. Where do you want your army to be?",
+    options: [
+      { label: "Dug into fixed firing positions, making them cross open ground to reach me", scores: { "Firepower|Static Gunline": 3, "Firepower|Firepower + Board Control": 1 } },
+      { label: "Already moving, repositioning before they can pin me down", scores: { "Mobility|Hit-and-Run": 3, "Pressure|Mobile Threat": 1 } },
+      { label: "Not on the table yet — arriving exactly where it hurts", scores: { "Ambush|Deep Strike": 3, "Ambush|Ambush": 1 } },
+      { label: "Already in their face, blades drawn", scores: { "Pressure|Shock Assault": 3, "Elite|Elite Assault": 1 } },
+    ],
+  },
+  {
+    text: "How do you feel about losing models?",
+    options: [
+      { label: "Doesn't matter — there's always more where that came from", scores: { "Mass|Disposable / Sacrificial": 3, "Attrition|Disposable Attrition": 2 } },
+      { label: "Every model matters, and I protect them fiercely", scores: { "Elite|Pure Elite": 3, "Attrition|Durability": 1 } },
+      { label: "Fine, as long as I got something better in the trade", scores: { "Attrition|Trading": 3, "Pressure|Surgical Assault": 1 } },
+      { label: "Doesn't matter — it'll get back up anyway", scores: { "Attrition|Regeneration": 3 } },
+    ],
+  },
+  {
+    text: "What's your list-building philosophy?",
+    options: [
+      { label: "Build an interaction that produces an enormous payoff", scores: { "Synergy|Combo Engine": 3, "Synergy|Resource Engine": 1 } },
+      { label: "Make every unit a little better because of the others around it", scores: { "Synergy|Tactical Synergy": 3, "Synergy|Buff Network": 1 } },
+      { label: "Construct the perfect detachment before the game even starts", scores: { "Synergy|Detachment / Construction Engine": 3 } },
+      { label: "Keep it flexible and adapt once I see what I'm facing", scores: { "Toolbox|Adaptive": 3, "Toolbox|Generalist": 1 } },
+    ],
+  },
+  {
+    text: "Your opponent has one juicy high-value target. What's your instinct?",
+    options: [
+      { label: "Send my best unit to surgically remove it", scores: { "Pressure|Surgical Assault": 3, "Elite|Elite Specialists": 1 } },
+      { label: "Throw overwhelming numbers at it until it dies", scores: { "Mass|Mass Assault": 3, "Pressure|Mass Assault": 1 } },
+      { label: "Concentrate my whole army into one devastating blow", scores: { "Elite|Deathball": 3, "Elite|Super-Heavy Elite": 1 } },
+      { label: "Ignore it — I'm busy controlling the rest of the board", scores: { "Firepower|Firepower + Board Control": 3, "Mobility|Board Control": 1 } },
+    ],
+  },
+  {
+    text: "How do you want your opponent to feel on turn one?",
+    options: [
+      { label: "Already worried, before I've even moved", scores: { "Pressure|Psychological Pressure": 3, "Ambush|Threat Projection": 1 } },
+      { label: "Confused about where the real threat actually is", scores: { "Firepower|Mobile Firepower": 3, "Mobility|Evasion": 1 } },
+      { label: "Certain death is coming — they just don't know when", scores: { "Firepower|Artillery / Indirect Fire": 3 } },
+      { label: "Overrun and outnumbered", scores: { "Mass|True Swarm": 3 } },
+    ],
+  },
+  {
+    text: "Pick a close-combat philosophy.",
+    options: [
+      { label: "Hit hard, immediately, everything committed", scores: { "Pressure|Shock Assault": 3, "Elite|Elite Assault": 1 } },
+      { label: "In, kill, out — before they can retaliate", scores: { "Mobility|Hit-and-Run": 3, "Mobility|Fast Assault": 1 } },
+      { label: "Don't fight fair — just don't be there when it goes wrong", scores: { "Mobility|Evasion": 3 } },
+      { label: "Grind them down, turn after turn", scores: { "Attrition|Grind": 3, "Attrition|Durability": 1 } },
+    ],
+  },
+  {
+    text: "How does your army actually arrive on the table?",
+    options: [
+      { label: "All at once, in force, from turn one", scores: { "Mass|Massed Infantry": 3, "Toolbox|Combined Arms": 1 } },
+      { label: "In waves, appearing throughout the battle", scores: { "Ambush|Reinforcement": 3 } },
+      { label: "Hidden, until the ambush triggers", scores: { "Ambush|Ambush": 3, "Ambush|Infiltration": 1 } },
+      { label: "Already deployed somewhere unexpected", scores: { "Ambush|Infiltration": 3 } },
+    ],
+  },
+  {
+    text: "Beyond killing things, what's your army's real job?",
+    options: [
+      { label: "Controlling objectives and space through constant movement", scores: { "Mobility|Board Control": 3, "Mobility|Maneuver Warfare": 1 } },
+      { label: "Manipulating the battlefield without necessarily killing anything", scores: { "Toolbox|Utility": 3 } },
+      { label: "Having an answer for literally every problem", scores: { "Toolbox|Generalist": 3, "Toolbox|Specialist Toolbox": 1 } },
+      { label: "Making sure the whole army is positioned exactly right", scores: { "Mobility|Maneuver Warfare": 3 } },
+    ],
+  },
+  {
+    text: "What's most satisfying to you at the table?",
+    options: [
+      { label: "Killing something that never even saw me", scores: { "Firepower|Artillery / Indirect Fire": 3 } },
+      { label: "A unit so tough my opponent gives up trying to kill it", scores: { "Attrition|Durability": 3, "Elite|Pure Elite": 1 } },
+      { label: "A resource or mechanic I get to carefully manage", scores: { "Synergy|Resource Engine": 3 } },
+      { label: "One small elite unit soloing their entire army", scores: { "Elite|Super-Heavy Elite": 3, "Elite|Deathball": 1 } },
+    ],
+  },
+  {
+    text: "Describe your ideal army in one word.",
+    options: [
+      { label: "Overwhelming", scores: { "Mass|True Swarm": 3 } },
+      { label: "Precise", scores: { "Elite|Elite Specialists": 3, "Pressure|Surgical Assault": 1 } },
+      { label: "Relentless", scores: { "Attrition|Grind": 3 } },
+      { label: "Unpredictable", scores: { "Mobility|Evasion": 3, "Pressure|Psychological Pressure": 1 } },
+    ],
+  },
+  {
+    text: "How does your army deploy at the start of the mission?",
+    options: [
+      { label: "Full army on the table, ready to control the middle immediately", scores: { "Toolbox|Combined Arms": 3, "Mass|Massed Infantry": 1 } },
+      { label: "Half held back, arriving later exactly when it matters", scores: { "Ambush|Reinforcement": 3, "Ambush|Deep Strike": 1 } },
+      { label: "Scouted ahead into position before the game really starts", scores: { "Ambush|Infiltration": 3, "Mobility|Evasion": 1 } },
+      { label: "Spread wide across the table to deny space from turn one", scores: { "Mobility|Board Control": 3, "Firepower|Firepower + Board Control": 1 } },
+    ],
+  },
+  {
+    text: "Your list is written. What's it actually built to do?",
+    options: [
+      { label: "Give me one universal answer to almost any problem", scores: { "Toolbox|Generalist": 3 } },
+      { label: "Give me a roster of specific tools for specific problems", scores: { "Toolbox|Specialist Toolbox": 3 } },
+      { label: "Stay flexible so I can adapt my plan turn to turn", scores: { "Toolbox|Adaptive": 3 } },
+      { label: "Set up a powerful combo I'm itching to pull off", scores: { "Synergy|Combo Engine": 3, "Synergy|Detachment / Construction Engine": 1 } },
+    ],
+  },
+  {
+    text: "How do you want to feel the moment you clinch the win?",
+    options: [
+      { label: "Like I ground them down over five long, punishing turns", scores: { "Attrition|Grind": 3, "Attrition|Durability": 1 } },
+      { label: "Like I ended it in one turn with a single knockout blow", scores: { "Elite|Deathball": 3, "Pressure|Shock Assault": 1 } },
+      { label: "Like I out-thought them through positioning before it even got physical", scores: { "Pressure|Psychological Pressure": 3, "Mobility|Maneuver Warfare": 1 } },
+      { label: "Like my combo finally came online and it was beautiful", scores: { "Synergy|Combo Engine": 3, "Synergy|Resource Engine": 1 } },
+    ],
+  },
+  {
+    text: "Pick a shooting philosophy.",
+    options: [
+      { label: "Sit still and let them walk into my kill zone", scores: { "Firepower|Static Gunline": 3 } },
+      { label: "Never stop moving — always find a new firing lane", scores: { "Firepower|Mobile Firepower": 3, "Mobility|Hit-and-Run": 1 } },
+      { label: "Shoot from so far away they can't even touch me back", scores: { "Firepower|Artillery / Indirect Fire": 3 } },
+      { label: "My shooting exists to hold ground, not just rack up kills", scores: { "Mobility|Board Control": 3, "Firepower|Firepower + Board Control": 1 } },
+    ],
+  },
+  {
+    text: "What's your relationship with stratagems, CP, or special resources?",
+    options: [
+      { label: "I hoard them for one perfect, game-swinging moment", scores: { "Synergy|Resource Engine": 3 } },
+      { label: "I spend freely on units I know I'll lose anyway", scores: { "Mass|Disposable / Sacrificial": 2, "Attrition|Disposable Attrition": 1 } },
+      { label: "My whole turn is built around triggering one specific combo", scores: { "Synergy|Combo Engine": 3 } },
+      { label: "Honestly, I don't think about it much — my army just does its job", scores: { "Toolbox|Generalist": 2, "Mass|Massed Infantry": 1 } },
+    ],
+  },
+  {
+    text: "Someone calls your army 'unfair' after a game. What did you actually do?",
+    options: [
+      { label: "Killed something before they even got a turn to react", scores: { "Ambush|Threat Projection": 3, "Pressure|Psychological Pressure": 1 } },
+      { label: "Never let them pin down where the real threat actually was", scores: { "Mobility|Evasion": 3, "Firepower|Mobile Firepower": 1 } },
+      { label: "Brought back a unit they were absolutely sure was dead", scores: { "Attrition|Regeneration": 3 } },
+      { label: "Buried them in bodies", scores: { "Mass|True Swarm": 3 } },
+    ],
+  },
+  {
+    text: "What's the ideal size of your army's 'important' units?",
+    options: [
+      { label: "Every single model on the table is important", scores: { "Elite|Pure Elite": 3 } },
+      { label: "A small handful of specialists", scores: { "Elite|Elite Specialists": 3, "Toolbox|Specialist Toolbox": 1 } },
+      { label: "One or two giant super-heavies that feel like bosses", scores: { "Elite|Super-Heavy Elite": 3 } },
+      { label: "None — my army is a machine, not a set of individuals", scores: { "Synergy|Tactical Synergy": 3, "Mass|Massed Infantry": 1 } },
+    ],
+  },
+  {
+    text: "What's your combat trade philosophy?",
+    options: [
+      { label: "I want an even trade, or better — the math has to work", scores: { "Attrition|Trading": 3 } },
+      { label: "I don't want to trade at all — I disengage before it happens", scores: { "Mobility|Hit-and-Run": 3, "Mobility|Evasion": 1 } },
+      { label: "I overwhelm the trade with sheer numbers instead", scores: { "Mass|Mass Assault": 3, "Pressure|Mass Assault": 1 } },
+      { label: "I make sure my elite unit wins the trade before it's even fair", scores: { "Pressure|Surgical Assault": 3, "Elite|Elite Specialists": 1 } },
+    ],
+  },
+  {
+    text: "It's the last turn and you're ahead. What's happening on the table?",
+    options: [
+      { label: "My gunline hasn't moved an inch, and neither has their will to attack it", scores: { "Firepower|Static Gunline": 3 } },
+      { label: "My fast units are camping every objective, completely untouchable", scores: { "Mobility|Board Control": 3, "Mobility|Maneuver Warfare": 1 } },
+      { label: "They have half an army left; I still have almost all of mine", scores: { "Attrition|Durability": 3, "Elite|Pure Elite": 1 } },
+      { label: "It's chaos on the board, but it's chaos that's working entirely in my favor", scores: { "Pressure|Mass Assault": 3, "Mass|Mass Assault": 1 } },
+    ],
+  },
+  {
+    text: "How do you want your army's threat to feel to your opponent?",
+    options: [
+      { label: "They never know which unit is about to appear right behind them", scores: { "Ambush|Ambush": 3, "Ambush|Threat Projection": 1 } },
+      { label: "There are just too many bodies to put down before turn three", scores: { "Mass|True Swarm": 3, "Mass|Massed Infantry": 1 } },
+      { label: "Every unit is a specialized tool waiting for exactly the right job", scores: { "Toolbox|Specialist Toolbox": 3, "Toolbox|Generalist": 1 } },
+      { label: "The whole army is one carefully built machine, not separate threats", scores: { "Synergy|Detachment / Construction Engine": 3, "Synergy|Tactical Synergy": 1 } },
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// State + render
+// ---------------------------------------------------------------------------
+let step = -1; // -1 = intro, 0..N-1 = questions, N = results
+let scores = {};
+
+function choose(optionScores) {
+  Object.entries(optionScores).forEach(([k, v]) => {
+    scores[k] = (scores[k] || 0) + v;
+  });
+  step += 1;
+  render();
+}
+
+function restart() {
+  scores = {};
+  step = -1;
+  render();
+}
+
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function renderIntro() {
+  return `
+    <div class="intro">
+      <div class="eyebrow" style="margin-bottom:14px;">Doctrine Assessment · 20 Questions</div>
+      <h1 class="display">WHAT'S YOUR<br/>40K PLAYSTYLE?</h1>
+      <p>Answer honestly about how you actually like to play — not the army you think you should like —
+      and we'll run an auspex scan to find the archetype, and factions, that fit.</p>
+      <button class="btn-primary" id="start-btn">Begin Assessment</button>
+    </div>
+  `;
+}
+
+function renderQuestion(index) {
+  const q = QUESTIONS[index];
+  const total = QUESTIONS.length;
+  const pct = (index / total) * 100;
+  const optionsHtml = q.options.map((opt, i) =>
+    `<button class="opt-btn" data-opt="${i}">${escapeHtml(opt.label)}</button>`
+  ).join("");
+
+  return `
+    <div class="q-header">
+      <span class="eyebrow">Turn ${String(index + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}</span>
+      <span class="eyebrow blood">Auspex Reading</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" style="width:${pct}%;"></div></div>
+    <h2 class="display q-title">${escapeHtml(q.text)}</h2>
+    <div id="options">${optionsHtml}</div>
+  `;
+}
+
+function computeMacroTotals() {
+  return MACRO_ORDER.map(macro => {
+    const value = Object.entries(scores)
+      .filter(([k]) => k.startsWith(macro + "|"))
+      .reduce((sum, [, v]) => sum + v, 0);
+    return { category: macro, value };
+  });
+}
+
+function radarSVG(macroTotals) {
+  const size = 300;
+  const cx = size / 2, cy = size / 2;
+  const outerR = 105;
+  const maxVal = Math.max(...macroTotals.map(m => m.value), 1);
+  const n = macroTotals.length;
+
+  const angleFor = i => (Math.PI * 2 * i) / n - Math.PI / 2;
+
+  // grid rings
+  let rings = "";
+  [0.25, 0.5, 0.75, 1].forEach(f => {
+    const pts = macroTotals.map((_, i) => {
+      const a = angleFor(i);
+      const r = outerR * f;
+      return `${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`;
+    }).join(" ");
+    rings += `<polygon points="${pts}" fill="none" stroke="#3a3234" stroke-width="1"/>`;
+  });
+
+  // spokes
+  let spokes = "";
+  macroTotals.forEach((_, i) => {
+    const a = angleFor(i);
+    const x = cx + outerR * Math.cos(a);
+    const y = cy + outerR * Math.sin(a);
+    spokes += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#3a3234" stroke-width="1"/>`;
+  });
+
+  // data polygon
+  const dataPts = macroTotals.map((m, i) => {
+    const a = angleFor(i);
+    const r = outerR * (m.value / maxVal);
+    return `${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`;
+  }).join(" ");
+  const dataPolygon = `<polygon points="${dataPts}" fill="#7c2029" fill-opacity="0.55" stroke="#b9924a" stroke-width="2"/>`;
+
+  // labels
+  let labels = "";
+  macroTotals.forEach((m, i) => {
+    const a = angleFor(i);
+    const r = outerR + 20;
+    const x = cx + r * Math.cos(a);
+    const y = cy + r * Math.sin(a);
+    let anchor = "middle";
+    if (Math.cos(a) > 0.3) anchor = "start";
+    else if (Math.cos(a) < -0.3) anchor = "end";
+    labels += `<text x="${x}" y="${y}" fill="#b9924a" font-size="11" font-family="Oswald, sans-serif" text-anchor="${anchor}" dominant-baseline="middle">${m.category}</text>`;
+  });
+
+  return `<svg viewBox="0 0 ${size} ${size}" width="100%" height="300" style="max-width:340px;">
+    ${rings}${spokes}${dataPolygon}${labels}
+  </svg>`;
+}
+
+function renderResults() {
+  const sortedSubs = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const topKeyStr = sortedSubs[0] ? sortedSubs[0][0] : null;
+  if (!topKeyStr) return "";
+  const topMacro = topKeyStr.split("|")[0];
+  const secondEntry = sortedSubs.find(([k]) => k.split("|")[0] !== topMacro);
+  const secondKeyStr = secondEntry ? secondEntry[0] : null;
+
+  const topArchetype = find(...topKeyStr.split("|"));
+  const secondArchetype = secondKeyStr ? find(...secondKeyStr.split("|")) : null;
+
+  const macroTotals = computeMacroTotals();
+
+  const factionChips = topArchetype.factions.map(f => `<span class="chip">${escapeHtml(f)}</span>`).join("");
+
+  let secondaryHtml = "";
+  if (secondArchetype) {
+    const chips2 = secondArchetype.factions.map(f => `<span class="chip" style="font-size:10.5px;padding:4px 9px;">${escapeHtml(f)}</span>`).join("");
+    secondaryHtml = `
+      <div class="secondary-box">
+        <div class="eyebrow" style="margin-bottom:8px;">Secondary Leaning — ${secondArchetype.macro}</div>
+        <div class="display sub-name">${escapeHtml(secondArchetype.sub)}</div>
+        <p class="sub-quote">"${escapeHtml(secondArchetype.fantasy)}"</p>
+        <div class="chip-row" style="gap:6px;">${chips2}</div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="eyebrow" style="text-align:center;margin-bottom:6px;">Auspex Scan Complete</div>
+    <h2 class="display macro-label">${topArchetype.macro}</h2>
+    <div class="radar-wrap">${radarSVG(macroTotals)}</div>
+    <div class="rule" style="margin:24px 0;"></div>
+    <div style="text-align:center;margin-bottom:26px;">
+      <div class="eyebrow" style="margin-bottom:8px;">Your Archetype</div>
+      <h1 class="display archetype-name">${escapeHtml(topArchetype.sub)}</h1>
+      <p class="archetype-quote">"${escapeHtml(topArchetype.fantasy)}"</p>
+    </div>
+    <div style="margin-bottom:30px;">
+      <div class="eyebrow" style="text-align:center;margin-bottom:12px;">Factions Built For This</div>
+      <div class="chip-row">${factionChips}</div>
+    </div>
+    ${secondaryHtml}
+    <div style="text-align:center;">
+      <button class="btn-ghost" id="restart-btn">Run Assessment Again</button>
+    </div>
+  `;
+}
+
+function render() {
+  const app = document.getElementById("app");
+  const total = QUESTIONS.length;
+
+  if (step === -1) {
+    app.innerHTML = renderIntro();
+    document.getElementById("start-btn").addEventListener("click", () => {
+      step = 0;
+      render();
+    });
+  } else if (step >= 0 && step < total) {
+    app.innerHTML = renderQuestion(step);
+    document.querySelectorAll("#options .opt-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const idx = parseInt(btn.getAttribute("data-opt"), 10);
+        choose(QUESTIONS[step].options[idx].scores);
+      });
+    });
+  } else {
+    app.innerHTML = renderResults();
+    const restartBtn = document.getElementById("restart-btn");
+    if (restartBtn) restartBtn.addEventListener("click", restart);
+  }
+}
+
+render();
+</script>
+</body>
+</html>
